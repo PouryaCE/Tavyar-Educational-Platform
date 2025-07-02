@@ -1,7 +1,7 @@
 
 <h1 align="center">Tavyar Educational Platform</h1>
 <p align="center">
-  <img src="link-to-your-logo-if-you-have-one" alt="Tavyar Logo" width="200" />
+  <img src="images/tavyarr.png" alt="Tavyar Logo" width="200" />
 </p>
 
 Tavyar is a modern educational platform focused on teaching programming skills through offline courses, real-world projects, and curated articles. The platform empowers users to learn, purchase, and download high-quality courses in a secure, user-friendly environment.
