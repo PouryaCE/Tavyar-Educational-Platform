@@ -1,6 +1,8 @@
-# Tavyar Educational Platform
 
-![Tavyar Logo](link-to-your-logo-if-you-have-one)  
+<h1 align="center">Tavyar Educational Platform</h1>
+<p align="center">
+  <img src="link-to-your-logo-if-you-have-one" alt="Tavyar Logo" width="200" />
+</p>
 
 Tavyar is a modern educational platform focused on teaching programming skills through offline courses, real-world projects, and curated articles. The platform empowers users to learn, purchase, and download high-quality courses in a secure, user-friendly environment.
 
@@ -46,13 +48,41 @@ Tavyar is a modern educational platform focused on teaching programming skills t
 
 ---
 
-## 📂 Project Structure
 
+## 🧪 Running the Server
+
+We use Django’s built-in testing framework to ensure code quality and stability.  
+
+
+### - Change directory
+```bash
+cd config
+```
+### - Running Tests
+
+```bash
+python manage.py runserver
+```
 
 
 ## 📝 Documentation
 - You can find the functional requirements and technical details in:
 requirements.docx
+---
+## 📜 License
+Distributed under the MIT License.
+See LICENSE for more details.
+
+
+---
+## 📞 Contact
+Website: https://tavyarco.ir
+
+Email: info@tavyar.com
+
+LinkedIn: your-linkedin
+
+Twitter: @yourhandle
 
 
 
