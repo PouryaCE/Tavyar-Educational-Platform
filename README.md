@@ -35,14 +35,14 @@ Tavyar is a modern educational platform focused on teaching programming skills t
 
 > *(You can edit this to match your actual stack)*
 
-- **Frontend**: React.js / Next.js / Tailwind CSS
-- **Backend**: Node.js (Express) / Django / Laravel (choose one)
-- **Database**: PostgreSQL / MySQL / MongoDB
-- **Authentication**: JWT / OAuth2
+- **Frontend**: HTML / CSS / JavaScript / Bootstrap 
+- **Backend**: Django / DRF(Maybe)
+- **Database**: PostgreSQL
+- **Authentication**: JWT 
 - **Notifications**: Twilio (SMS) / Firebase (Push)
-- **Payments**: Stripe / Zarinpal / Pay.ir
-- **Cloud & Hosting**: AWS / Vercel / DigitalOcean
-- **APIs**: RESTful / GraphQL
+- **Payments**: Zarinpal
+- **Cloud & Hosting**: .............
+- **APIs**: RESTfulApi with Django Rest Framework
 
 ---
 
