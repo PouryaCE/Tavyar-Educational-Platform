@@ -1,88 +1,150 @@
 
+
+
+
+
 <h1 align="center">Tavyar Educational Platform</h1>
 <p align="center">
   <img src="images/tavyarr.png" alt="Tavyar Logo" width="200" />
 </p>
 
-Tavyar is a modern educational platform focused on teaching programming skills through offline courses, real-world projects, and curated articles. The platform empowers users to learn, purchase, and download high-quality courses in a secure, user-friendly environment.
+**Tavyar** is a modern educational platform designed to empower learners with high-quality, engaging courses. Built with Django, MySQL, and front-end technologies (HTML, CSS, JavaScript), Tavyar provides a seamless experience for students and instructors to connect, learn, and grow.
 
 ---
 
 ## 🚀 Features
 
-- User registration & authentication via mobile number and password
-- Secure SMS code verification
-- Course listing with filtering, search, and categorization
-- Secure course purchasing and downloadable content
-- Project repository with source code for learners
-- Blogging system for educational articles
-- User dashboard with history, favorites, and profile editing
-- Payment gateway integration
-- Admin panel to manage users, courses, projects, articles, and sales
-- Ratings & reviews for courses
-- Discount codes / coupons system
-- Notifications (SMS, email, in-app)
-- Affiliate/referral system
-- Subscription membership options
-- Advanced analytics & tracking
-- Role-based permissions (admin, instructor, student)
-- SEO optimization
-- Secure download links with expiration
-- Responsive design for all devices
-- Backup and recovery
+- User registration and authentication  
+- Secure SMS code verification (optional)  
+- Instructor and student roles  
+- Course creation and enrollment  
+- Lesson and module management  
+- Responsive front-end with clean, modern UI  
+- Payment gateway integration (planned)  
+- Robust MySQL data storage  
+- Admin dashboard  
+- Scalable and extensible architecture
 
 ---
 
 ## 🛠️ Tech Stack
 
-> *(You can edit this to match your actual stack)*
-
-- **Frontend**: HTML / CSS / JavaScript / Bootstrap 
-- **Backend**: Django / DRF(Maybe)
-- **Database**: PostgreSQL
-- **Authentication**: JWT 
-- **Notifications**: Twilio (SMS) / Firebase (Push)
-- **Payments**: Zarinpal
-- **Cloud & Hosting**: .............
-- **APIs**: RESTfulApi with Django Rest Framework
+- **Backend**: Django 5.2.3
+- **Database**: MySQL 8
+- **Frontend**: HTML5, CSS3, JavaScript  
+- **Authentication**: Django’s built-in system (with extensibility for social login)  
+- **Deployment**: Gunicorn + Nginx (recommended)  
+- **Containerization**: Docker (optional)
 
 ---
 
+## 📦 Installation
 
-## 🧪 Running the Server
+**Step 1: Clone the repository**
 
-We use Django’s built-in testing framework to ensure code quality and stability.  
-
-
-### - Change directory
 ```bash
-cd config
+git clone https://github.com/yourusername/tavyar.git
+cd tavyar
 ```
-### - Running Tests
+
+**Step 2: Set up your virtual environment**
+
+```bash
+python -m venv venv
+source venv/bin/activate
+```
+
+**Step 3: Install dependencies**
+
+```bash
+pip install -r requirements.txt
+```
+
+**Step 4: Configure MySQL database**
+
+Create the database in MySQL:
+
+```sql
+CREATE DATABASE tavyar CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
+```
+
+Update your `tavyar/settings.py`:
+
+```python
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'tavyar',
+        'USER': 'your_mysql_user',
+        'PASSWORD': 'your_password',
+        'HOST': 'localhost',
+        'PORT': '3306',
+    }
+}
+```
+
+**Step 5: Apply migrations**
+
+```bash
+python manage.py migrate
+```
+
+**Step 6: Create superuser**
+
+```bash
+python manage.py createsuperuser
+```
+
+**Step 7: Run the development server**
 
 ```bash
 python manage.py runserver
 ```
 
-
-## 📝 Documentation
-- You can find the functional requirements and technical details in:
-requirements.docx
----
-## 📜 License
-Distributed under the MIT License.
-See LICENSE for more details.
-
+Visit [http://127.0.0.1:8000](http://127.0.0.1:8000) to see Tavyar running locally.
 
 ---
-## 📞 Contact
-Website: https://tavyarco.ir
 
-Email: info@tavyar.com
+## 🧩 Contributing
 
-LinkedIn: your-linkedin
+Contributions are welcome! Please follow these steps:
 
-Twitter: @yourhandle
+1. Fork the repository  
+2. Create a feature branch (`git checkout -b feature/amazing-feature`)  
+3. Commit your changes  
+4. Push to your branch  
+5. Open a pull request
+
+---
+
+## 🛡️ Security
+
+If you discover a security vulnerability, please open an issue or contact the maintainers directly.
+
+---
+
+## 📄 License
+
+This project is licensed under the [MIT License](LICENSE).
+
+---
+
+## 👨‍💻 Authors
+
+- **Pourya Janparvar** 
+- 
+
+---
+
+## 🌟 Acknowledgments
+
+- Django Community  
+- MySQL Community  
+- OpenAI ChatGPT for drafting inspiration  
+- All developers and educators who believe in open, accessible learning
+
+
+
 
 
 
