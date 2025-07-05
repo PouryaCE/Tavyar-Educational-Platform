@@ -1,8 +1,3 @@
-
-
-
-
-
 <h1 align="center">Tavyar Educational Platform</h1>
 <p align="center">
   <img src="images/tavyarr.png" alt="Tavyar Logo" width="200" />
@@ -51,16 +46,30 @@ cd tavyar
 
 ```bash
 python -m venv venv
+```
+
+**Step 3: active your virtual environment**
+
+
+- ***for linux:***
+```bash
 source venv/bin/activate
 ```
 
-**Step 3: Install dependencies**
+
+- ***for windows:***
+```bash
+venv\Scripts\activate
+```
+
+
+**Step 4: Install dependencies**
 
 ```bash
 pip install -r requirements.txt
 ```
 
-**Step 4: Configure MySQL database**
+**Step 5: Configure MySQL database**
 
 Create the database in MySQL:
 
@@ -83,19 +92,19 @@ DATABASES = {
 }
 ```
 
-**Step 5: Apply migrations**
+**Step 6: Apply migrations**
 
 ```bash
 python manage.py migrate
 ```
 
-**Step 6: Create superuser**
+**Step 7: Create superuser**
 
 ```bash
 python manage.py createsuperuser
 ```
 
-**Step 7: Run the development server**
+**Step 8: Run the development server**
 
 ```bash
 python manage.py runserver
