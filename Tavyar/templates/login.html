@@ -1,0 +1,50 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="fa">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'css/style-login.css' %}">
+    <script defer src="{% static 'js/main-login.js' %}"></script>
+    <title>tavyar</title>
+</head>
+<body>
+    <div class="container right-panel-active">
+        <!-- Sign Up -->
+        <div class="container__form container--signup">
+            <form action="#" class="form" id="form1">
+                <h2 class="form__title">ثبت نام کاربران</h2>
+                <input type="text"dir="rtl" placeholder="نام کاربری" class="input" />
+                <input type="text" dir="rtl" placeholder="شماره همراه" class="input" />
+                  <input type="email" dir="rtl" placeholder="ایمیل" class="input" />
+                <button class="btn">ثبت نام</button>
+            </form>
+        </div>
+
+        <!-- Sign In -->
+        <!-- <div class="container__form container--signin">
+            <form action="#" class="form" id="form2">
+                <h2 class="form__title">ورودکاربران</h2>
+                <input type="email"  dir="rtl" placeholder="نام کاربری" class="input" />
+                <input type="password" dir="rtl" placeholder="شماره همراه" class="input" />
+                  <input type="password" dir="rtl" placeholder="کد ارسال شده" class="input" />
+                <button class="btn">ارسال کد</button>
+                <button class="btn">ورود</button>
+
+            </form>
+        </div> -->
+
+        <!-- Overlay -->
+        <div class="container__overlay">
+            <div class="overlay">
+                <div class="overlay__panel overlay--left">
+                    <!-- <button class="btn" id="signIn">ورود کاربران</button> -->
+                </div>
+                <div class="overlay__panel overlay--right">
+                    <button class="btn" id="signUp">ثبت نام کاربران</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
