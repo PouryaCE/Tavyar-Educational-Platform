@@ -19,7 +19,7 @@ ALLOWED_HOSTS = []
 
 # Application definition
 
-INSTALLED_APPS = [
+INSTALLED_APPS = [  
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -27,6 +27,9 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'home.apps.HomeConfig',
+    'accounts.apps.AccountsConfig',
+    'category.apps.CategoryConfig',
+    'course.apps.CourseConfig',
 ]
 
 MIDDLEWARE = [
@@ -105,15 +108,19 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/5.2/howto/static-files/
 
 
-# static files configration
-STATIC_URL = '/static/'  # This is the default
+# URL مسیر سرو فایل‌های استاتیک
+STATIC_URL = '/static/'
 
-# (optional but good practice)
+# مسیرهای اضافی فایل‌های استاتیک (توسعه)
 STATICFILES_DIRS = [
-    BASE_DIR / "static",  # allows you to store static files in a common folder
+    BASE_DIR / "static",
 ]
+
+# مسیر جمع‌آوری فایل‌ها برای Production
+STATIC_ROOT = BASE_DIR / "staticfiles"
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+AUTH_USER_MODEL = 'accounts.User'  # custom user model
