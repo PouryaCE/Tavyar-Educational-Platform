@@ -26,6 +26,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+
+    # My Apps
     'home.apps.HomeConfig',
     'accounts.apps.AccountsConfig',
     'category.apps.CategoryConfig',
@@ -122,5 +124,21 @@ STATIC_ROOT = BASE_DIR / "staticfiles"
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.2/ref/settings/#default-auto-field
 
-DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 AUTH_USER_MODEL = 'accounts.User'  # custom user model
+
+
+DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+
+# تنظیمات ایمیل (نمونه برای Gmail SMTP)
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
+
+
+EMAIL_HOST_USER = 'janparvarpourya@gmail.com'
+EMAIL_HOST_PASSWORD = 'skgj fgsh hkqp hpvu'  # app password واقعی
+DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
+
+

@@ -5,7 +5,7 @@ from django.contrib.auth.models import (
 )
 from django.utils import timezone
 from .manager import UserManager
-
+import random
 
 
 
@@ -18,7 +18,8 @@ class User(AbstractBaseUser, PermissionsMixin):
     )
 
 
-
+    email_verified = models.BooleanField(default=False, verbose_name="ایمیل تایید شده")
+    verification_code = models.CharField(max_length=6, blank=True, null=True, verbose_name="کد تایید ایمیل")
     # custom fields
     email = models.EmailField(unique=True, max_length=255, verbose_name="ایمیل")
     type_id = models.IntegerField(null=True, blank=True, choices=USER_TYPES, verbose_name="نوع کاربر", default=4)  # نوع کاربر (یا FK به جدول نوع‌ها)
@@ -50,3 +51,9 @@ class User(AbstractBaseUser, PermissionsMixin):
 
     def __str__(self):
         return self.email
+    
+    def generate_verification_code(self):
+        code = str(random.randint(100000, 999999))
+        self.verification_code = code
+        self.save()
+        return code
