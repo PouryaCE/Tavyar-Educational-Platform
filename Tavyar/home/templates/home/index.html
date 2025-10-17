@@ -1,12 +1,11 @@
+{% extends 'base.html' %}
 {% load static %}
-<!DOCTYPE html>
-<html dir="rtl" lang="fa">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>آموزشگاه تاویار</title>
 
+{% block title %}
+    آموزشگاه تاویار
+{% endblock title %}
+
+{% block css_styles %}
     <link rel="stylesheet" href="https://unpkg.com/swiper@7/swiper-bundle.min.css" />
 
     <!-- font awesome cdn link  -->
@@ -14,12 +13,10 @@
 
     <!-- custom css file link  -->
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
+{% endblock %}
 
-</head>
-<body>
 
-<!-- header section starts  -->
-
+{% block content %}
 <header class="header">
 
     <div class="header-1">
@@ -71,20 +68,26 @@
 
     <div id="close-login-btn" class="fas fa-times"></div>
 
-    <form action="">
-        <h3>ورود</h3>
-        <span>نام کاربری</span>
-        <input type="email" name="" class="box" placeholder="ایمیل خود را وارد کنید" id="">
-        <span>رمز عبور</span>
-        <input type="password" name="" class="box" placeholder="رمز عبور خود را وارد کنید" id="">
-        <div class="checkbox">
-            <input type="checkbox" name="" id="remember-me">
-            <label for="remember-me"> به خاطر سپردن</label>
-        </div>
-        <input type="submit" value="sign in" class="btn">
-        <p>رمز خود را فراموش کرده اید ؟ <a href="#">اینجا کلیک کنید</a></p>
-        <p>ثبت نام نکرده اید ؟ <a href="login.html">ساخت حساب</a></p>
-    </form>
+<form action="{% url 'accounts:login' %}" method="post">
+    {% csrf_token %}
+    <h3>ورود</h3>
+
+    <span>ایمیل</span>
+    <input type="email" name="email" class="box" placeholder="ایمیل خود را وارد کنید" required>
+
+    <span>رمز عبور</span>
+    <input type="password" name="password" class="box" placeholder="رمز عبور خود را وارد کنید" required>
+
+    <div class="checkbox">
+        <input type="checkbox" id="remember-me" name="remember_me">
+        <label for="remember-me"> به خاطر سپردن</label>
+    </div>
+
+    <input type="submit" value="ورود به حساب" class="btn">
+
+    <p>رمز خود را فراموش کرده‌اید؟ <a href="#">اینجا کلیک کنید</a></p>
+    <p>ثبت نام نکرده‌اید؟ <a href="{% url 'accounts:register' %}">ساخت حساب</a></p>
+</form>
 
 </div>
 
@@ -443,33 +446,10 @@
 
 </section>
 
-<!-- footer section ends -->
-
-<!-- loader  -->
-
-<!-- <div class="loader-container">
-    <img src="image/loader-img.gif" alt="">
-</div> -->
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 <script src="https://unpkg.com/swiper@7/swiper-bundle.min.js"></script>
 
 <!-- custom js file link  -->
 <script src="{% static 'js/script.js' %}"></script>
-
-</body>
-</html>
+{% endblock %}

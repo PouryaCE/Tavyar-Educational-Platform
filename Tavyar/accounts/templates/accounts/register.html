@@ -12,11 +12,12 @@
     <div class="container right-panel-active">
         <!-- Sign Up -->
         <div class="container__form container--signup">
-            <form action="#" class="form" id="form1">
+            <form action="{% url 'accounts:register' %}" class="form" id="form1" method="post">
+                {% csrf_token %}
                 <h2 class="form__title">ثبت نام کاربران</h2>
-                <input type="text"dir="rtl" placeholder="نام کاربری" class="input" />
-                <input type="text" dir="rtl" placeholder="شماره همراه" class="input" />
-                  <input type="email" dir="rtl" placeholder="ایمیل" class="input" />
+                <input name="email" type="email" dir="rtl" placeholder="ایمیل" class="input" />
+                <input name="password1" type="password" dir="rtl" placeholder="گذر واژه" class="input" />
+                <input name="password2" type="password" dir="rtl" placeholder="تایید گذر واژه" class="input" />
                 <button class="btn">ثبت نام</button>
             </form>
         </div>

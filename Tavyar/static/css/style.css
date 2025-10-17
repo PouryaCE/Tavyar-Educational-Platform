@@ -820,3 +820,29 @@ section{
     }
 
 }
+
+.messages {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    width: auto;
+    z-index: 9999;
+}
+
+.alert {
+    padding: 10px 20px;
+    border-radius: 10px;
+    color: white;
+    margin-bottom: 10px;
+    animation: fadeIn 0.5s ease;
+}
+
+.alert-success { background-color: #4caf50; }
+.alert-danger { background-color: #f44336; }
+.alert-warning { background-color: #ff9800; }
+.alert-info { background-color: #2196f3; }
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
