@@ -32,6 +32,10 @@ INSTALLED_APPS = [
     'accounts.apps.AccountsConfig',
     'category.apps.CategoryConfig',
     'course.apps.CourseConfig',
+
+
+    # third packages
+    'storages',
 ]
 
 MIDDLEWARE = [
@@ -142,3 +146,14 @@ EMAIL_HOST_PASSWORD = 'skgj fgsh hkqp hpvu'  # app password واقعی
 DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
 
 
+
+
+
+# تنظیمات آپلود فایل‌ها در ابر آروان (بسیار بسیار مهم)
+DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
+AWS_ACCESS_KEY_ID = 'c4672501-d0c4-4b8e-96e9-135e95ec845c'
+AWS_SECRET_ACCESS_KEY = '5f4b682ea1daa61614a76162fee5d50bd8c7daa75481fed89ee60a2081ca9afa'
+AWS_S3_ENDPOINT_URL = 's3.ir-thr-at1.arvanstorage.ir'
+AWS_STORAGE_BUCKET_NAME = 'tavyar-educational-platform'
+AWS_SERVICE_NAME = 's3'
+AWS_S3_FILE_OVERWRITE = False  # جلوگیری از بازنویسی فایل‌ها با نام یکسان

@@ -29,15 +29,15 @@ class ChapterInline(admin.StackedInline):
 # ===============================
 @admin.register(Course)
 class CourseAdmin(admin.ModelAdmin):
-    list_display = ('title', 'category_id', 'teacher', 'level', 'price', 'has_certificate', 'created_at')
-    list_filter = ('level', 'has_certificate', 'has_exam', 'course_format', 'category_id')
-    search_fields = ('title', 'teacher__username', 'category_id__name')
+    list_display = ('title', 'category', 'teacher', 'level', 'price', 'has_certificate', 'created_at')
+    list_filter = ('level', 'has_certificate', 'has_exam', 'course_format', 'category')
+    search_fields = ('title', 'teacher__username', 'category__name')
     inlines = [ChapterInline]
     ordering = ('-created_at',)
     readonly_fields = ('created_at', 'updated_at')
     fieldsets = (
         ('مشخصات کلی دوره', {
-            'fields': ('title', 'category_id', 'teacher', 'level', 'course_format', 'length')
+            'fields': ('title', 'category', 'teacher', 'level', 'course_format', 'length_minutes')
         }),
         ('اطلاعات تکمیلی', {
             'fields': ('prerequisite', 'software', 'description')
@@ -77,9 +77,10 @@ class LessonAdmin(admin.ModelAdmin):
     list_filter = ('chapter__course',)
     search_fields = ('title', 'chapter__title')
     ordering = ('chapter', 'order')
+    prepopulated_fields = {'slug': ('title',)}
     fieldsets = (
         ('مشخصات درس', {
-            'fields': ('chapter', 'title', 'order', 'duration')
+            'fields': ('chapter', 'title', 'slug', 'order', 'duration')
         }),
         ('محتوا و ویدیو', {
             'fields': ('description', 'video')

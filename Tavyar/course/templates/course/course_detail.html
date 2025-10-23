@@ -1,0 +1,50 @@
+<!-- templates/courses/course_detail.html -->
+{% extends "base.html" %}
+{% block content %}
+
+<div class="course-container" style="display:flex; gap:20px;">
+
+  <!-- منوی سمت چپ -->
+  <div class="sidebar" style="width:25%; border-right:1px solid #ccc; padding:10px;">
+    <h3>{{ course.title }}</h3>
+    {% for chapter in course.chapters.all %}
+      <h4>{{ chapter.title }}</h4>
+      <ul>
+        {% for lesson in chapter.lessons.all %}
+          <li>
+            <a href="#" class="lesson-link" data-video="{{ lesson.video }}">{{ lesson.title }}</a>
+          </li>
+        {% endfor %}
+      </ul>
+    {% endfor %}
+  </div>
+
+  <!-- پخش‌کننده ویدیو -->
+  <div class="player-area" style="flex:1; padding:10px;">
+    <video id="coursePlayer" width="100%" height="500" controls controlsList="nodownload" preload="none">
+      {% if first_lesson %}
+        <source src="{{ first_lesson.video }}" type="video/mp4">
+      {% endif %}
+      مرورگر شما از پخش ویدیو پشتیبانی نمی‌کند.
+    </video>
+  </div>
+
+</div>
+
+<script>
+  // تغییر لینک ویدیو هنگام کلیک روی هر درس
+  document.querySelectorAll('.lesson-link').forEach(link => {
+    link.addEventListener('click', e => {
+      e.preventDefault();
+      const videoUrl = e.target.getAttribute('data-video');
+      const player = document.getElementById('coursePlayer');
+      player.src = videoUrl;
+      player.play();
+    });
+  });
+
+  // غیرفعال کردن دانلود ویدیو
+  document.addEventListener('contextmenu', e => e.preventDefault());
+</script>
+
+{% endblock %}
