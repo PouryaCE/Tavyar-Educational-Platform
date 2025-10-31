@@ -1,50 +1,401 @@
 <!-- templates/courses/course_detail.html -->
 {% extends "base.html" %}
+{% load static %}
+
+
+{% block title %}
+آموزشگاه تاویار
+{% endblock title %}
+
+
+{% block css_styles %}
+    <link rel="stylesheet" href="{% static 'https://unpkg.com/swiper@7/swiper-bundle.min.css' %}" />
+
+    <!-- font awesome cdn link  -->
+    <link rel="stylesheet" href="{% static 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css' %}">
+
+    <!-- custom css file link  -->
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+{% endblock %}
+
+
+
+
+
 {% block content %}
 
-<div class="course-container" style="display:flex; gap:20px;">
+<header class="header">
 
-  <!-- منوی سمت چپ -->
-  <div class="sidebar" style="width:25%; border-right:1px solid #ccc; padding:10px;">
-    <h3>{{ course.title }}</h3>
-    {% for chapter in course.chapters.all %}
-      <h4>{{ chapter.title }}</h4>
-      <ul>
-        {% for lesson in chapter.lessons.all %}
-          <li>
-            <a href="#" class="lesson-link" data-video="{{ lesson.video }}">{{ lesson.title }}</a>
-          </li>
-        {% endfor %}
-      </ul>
-    {% endfor %}
-  </div>
+    <div class="header-1">
 
-  <!-- پخش‌کننده ویدیو -->
-  <div class="player-area" style="flex:1; padding:10px;">
-    <video id="coursePlayer" width="100%" height="500" controls controlsList="nodownload" preload="none">
-      {% if first_lesson %}
-        <source src="{{ first_lesson.video }}" type="video/mp4">
-      {% endif %}
-      مرورگر شما از پخش ویدیو پشتیبانی نمی‌کند.
-    </video>
-  </div>
+        <a href="#" class="logo"> <i class=""></i>آموزشگاه تاویار </a>
+
+        <form action="" class="search-form">
+            <input type="search" name="" placeholder="جستجو کنید" id="search-box">
+            <label for="search-box" class="fas fa-search"></label>
+        </form>
+
+        <div class="icons">
+            <div id="search-btn" class="fas fa-search"></div>
+            <a href="#" class="fas fa-heart"></a>
+            <a href="#" class="fas fa-shopping-cart"></a>
+            <div id="login-btn" class="fas fa-user"></div>
+        </div>
+
+    </div>
+
+    <div class="header-2">
+        <nav class="navbar">
+            <a href="#home">خانه</a>
+
+            <div class="dropdown">
+                <a href="#featured" class="dropbtn">دوره ها</a>
+
+                <ul class="dropdown-content">
+
+                    <li class="has-submenu">
+                        <a href="#course1">برنامه نویسی وب 👈</a>
+
+                        <ul class="sub-dropdown-content">
+                            <li><a href="#front-end">Front-End (رابط کاربری)</a></li>
+                            <li><a href="#back-end">Back-End (بخش سرور)</a></li>
+                            <li><a href="#full-stack">Full-Stack (کامل)</a></li>
+                        </ul>
+                    </li>
+
+                    <li><a href="#course2">هوش مصنوعی</a></li>
+                    <li><a href="#course3">شبکه و امنیت</a></li>
+                </ul>
+            </div>
+
+            <a href="#reviews">مربیان</a>
+            <a href="#arrivals">پروژه ها</a>
+            <a href="#blogs">وبلاگ</a>
+              <a href="#TAZETARIN">تازه ترین ها (دسترسی سریع)</a>
+        </nav>
+    </div>
+
+</header>
+
+<!-- header section ends -->
+
+<!-- bottom navbar  -->
+
+<nav class="bottom-navbar">
+    <a href="#home" class="fas fa-home"></a>
+    <a href="#featured" class="fas fa-list"></a>
+    <a href="#arrivals" class="fas fa-tags"></a>
+    <a href="#reviews" class="fas fa-comments"></a>
+    <a href="#blogs" class="fas fa-blog"></a>
+</nav>
+
+<!-- login form  -->
+
+<div class="login-form-container">
+
+    <div id="close-login-btn" class="fas fa-times"></div>
+
+    <form action="">
+        <h3>ورود</h3>
+        <span>نام کاربری</span>
+        <input type="email" name="" class="box" placeholder="ایمیل خود را وارد کنید" id="">
+        <span>رمز عبور</span>
+        <input type="password" name="" class="box" placeholder="رمز عبور خود را وارد کنید" id="">
+        <div class="checkbox">
+            <input type="checkbox" name="" id="remember-me">
+            <label for="remember-me"> به خاطر سپردن</label>
+        </div>
+        <input type="submit" value="sign in" class="btn">
+        <p>رمز خود را فراموش کرده اید ؟ <a href="#">اینجا کلیک کنید</a></p>
+        <p>ثبت نام نکرده اید ؟ <a href="login.html">ساخت حساب</a></p>
+    </form>
 
 </div>
 
-<script>
-  // تغییر لینک ویدیو هنگام کلیک روی هر درس
-  document.querySelectorAll('.lesson-link').forEach(link => {
-    link.addEventListener('click', e => {
-      e.preventDefault();
-      const videoUrl = e.target.getAttribute('data-video');
-      const player = document.getElementById('coursePlayer');
-      player.src = videoUrl;
-      player.play();
-    });
-  });
+<!-- home section starts  -->
 
-  // غیرفعال کردن دانلود ویدیو
-  document.addEventListener('contextmenu', e => e.preventDefault());
-</script>
+<section class="home" id="home">
+
+    <div class="row">
+
+        <div class="content">
+
+              <h3>آموزش به صورت آنلاین و حضوری</h3>
+            <h3>    <p>آموزشگاه تاویار در زمینه کامپیوتر و حسابداری خدمت رسان شماست</p></h3>
+
+
+              <p>ارایه دهنده مدرک فنی حرفه ای</p>
+
+
+        </div>
+
+        <!-- <div class="swiper books-slider">
+            <div class="swiper-wrapper">
+                <a href="#" class="swiper-slide"><img src="image/softs.png" alt=""></a>
+
+            </div> -->
+            <img src="image/tav.ico" class="stand" alt="">
+        </div>
+
+    </div>
+
+</section>
+
+<!-- home section ense  -->
+
+<!-- icons section starts  -->
+
+<section class="icons-container">
+
+    <!-- <div class="icons">
+        <i class="fas fa-shipping-fast"></i>
+        <div class="content">
+            <h3>ارسال رایگان</h3>
+            <p>سفارش بالای 100 هزار تومان</p>
+        </div>
+    </div> -->
+
+    <!-- <div class="icons">
+        <i class="fas fa-lock"></i>
+        <div class="content">
+            <h3>پرداخت امن</h3>
+            <p>100 پرداخت مطمئن</p>
+        </div>
+    </div>
+
+    <div class="icons">
+        <i class="fas fa-redo-alt"></i>
+        <div class="content">
+            <h3>بازگشت آسان</h3>
+            <p>10 روز مهلت بازگشت</p>
+        </div>
+    </div>
+
+    <div class="icons">
+        <i class="fas fa-headset"></i>
+        <div class="content">
+            <h3>پشتیبانی 7/24</h3>
+            <p>در هر زمان با ما تماس بگیرید</p>
+        </div>
+    </div> -->
+
+</section>
+
+<!-- icons section ends -->
+
+<!-- featured section starts  -->
+
+<section class="featured" id="featured">
+  <div class="swiper featured-slider">
+    <div class="swiper-slide box">
+      <div class="map" style="display: flex; flex-wrap: wrap; gap: 20px;">
+
+        <!-- ویدئو -->
+        <div class="video-container" style="flex: 1; min-width: 300px;">
+          <video width="100%" height="auto" controls poster="images/my-video-thumbnail.jpg">
+            <source src="videos/tutorial.mp4" type="video/mp4">
+            <source src="videos/tutorial.webm" type="video/webm">
+            <p>مرورگر شما تگ ویدئو HTML5 را پشتیبانی نمی‌کند. <a href="videos/tutorial.mp4">لینک دانلود ویدئو</a></p>
+          </video>
+        </div>
+
+        <!-- منوی کناری -->
+        <div class="meno" style="flex: 0 0 300px; min-width: 200px;">
+          <div class="scrollable-menu">
+            <div class="category">
+              <h3>کتاب ها</h3>
+              <ul>
+                <li><a href="#">برنامه نویسی ۱</a></li>
+                <li><a href="#">برنامه نویسی ۲</a></li>
+                <li><a href="#">منطق و ریاضیات</a></li>
+                <li><a href="#">ساختمان داده</a></li>
+              </ul>
+            </div>
+            <div class="category">
+              <h3>عملیات مقدماتی</h3>
+              <ul>
+                <li><a href="#">اضافه کردن به جدول</a></li>
+                <li><a href="#">ویرایش آیتم</a></li>
+                <li><a href="#">حذف رکورد</a></li>
+                <li><a href="#">جستجوی پیشرفته</a></li>
+                <li><a href="#">گزارش‌گیری</a></li>
+                <li><a href="#">تعاریف اولیه</a></li>
+                <li><a href="#">راه‌اندازی سیستم</a></li>
+                <li><a href="#">پشتیبان‌گیری</a></li>
+              </ul>
+            </div>
+            <div class="category">
+              <h3>فصول درسی</h3>
+              <ul>
+                <li><a href="#">فصل اول</a></li>
+                <li><a href="#">فصل دوم</a></li>
+                <li><a href="#">فصل سوم</a></li>
+              </ul>
+            </div>
+            <div class="category">
+              <h3>تمرینات</h3>
+              <ul>
+                <li><a href="#">تمرین ۱</a></li>
+                <li><a href="#">تمرین ۲</a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- محتوا -->
+      <div class="content" style="margin-top: 20px;">
+        <h1>اطلاعات درباره دوره</h1>
+        <h3>نام دوره: ووردپرس</h3>
+        <h3>مدت زمان: 44 ساعت</h3>
+        <h3>مدرس: زهره براتی</h3>
+        <h3>پیش نیاز: html/css</h3>
+
+        <div class="price">5 هزار تومان <span>10 هزار تومان</span></div>
+        <a href="#" class="btn">اضافه کردن به سبد خرید</a>
+        <a href="#" class="btn">دیدن نمونه تدریس</a>
+      </div>
+    </div>
+  </div>
+
+<!-- featured section ends -->
+
+<!-- newsletter section starts -->
+
+<section class="newsletter">
+
+    <form action="">
+        <h3>نظرخودرا وارد کنید</h3>
+        <input type="email" name="" placeholder="ایمیل خود را وارد کنید" id="" class="box">
+        <input type="text" name="" placeholder="نظرخودراوارد کنید" id="" class="box">
+        <input type="submit" value="ثبت" class="btn">
+    </form>
+
+</section>
+
+<!-- newsletter section ends -->
+
+<!-- arrivals section starts  -->
+
+
+
+<!-- arrivals section ends -->
+
+<!-- deal section starts  -->
+
+<section class="deal">
+
+    <div class="content">
+        <h3>آموزشگاه کامپیوتر و حسابداری تاوریار</h3>
+        <h1>مدرک معتبرفنی حرفه ای</h1>
+    <p>کلاس هاس آنلاین و حضوری برای شما همراهان عزیز</p>
+    </div>
+
+    <div class="image">
+        <img src="image/softs.png" alt="">
+    </div>
+
+</section>
+
+<!-- deal section ends -->
+
+<!-- reviews section starts  -->
+
+<section class="reviews" id="jozve">
+
+    <h1 class="heading"> <span>دوره های مشابه جست و جو شده</span> </h1>
+
+    <div class="swiper reviews-slider">
+
+        <div class="swiper-wrapper">
+
+            <div class="swiper-slide box">
+                <img src="image/wordpress111.jpg" alt="">
+                <h3>ویدیو1</h3>
+        <h4>ووردپرس</h4>
+        <p>جزوه مقدماتی </p>
+          <h4>15 دقیقه</h4>
+  <a href="#" class="btn">دانلود جروه و ویدیو1</a>
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<section class="footer">
+
+    <div class="box-container">
+
+
+
+        <div class="box">
+            <h3>لینک های اصلی</h3>
+            <a href="#"> <i class="fas fa-arrow-right"></i> خانه </a>
+            <a href="#"> <i class="fas fa-arrow-right"></i> دوره ها </a>
+            <a href="#"> <i class="fas fa-arrow-right"></i> مربیان </a>
+            <a href="#"> <i class="fas fa-arrow-right"></i> پروژه ها </a>
+            <a href="#"> <i class="fas fa-arrow-right"></i> وبلاگ </a>
+        </div>
+
+        <div class="box">
+            <h3>لینک های در دسترس</h3>
+            <a href="#"> <i class="fas fa-arrow-right"></i> حساب کاربری </a>
+            <a href="#"> <i class="fas fa-arrow-right"></i> آموزش های کاربر </a>
+            <a href="#"> <i class="fas fa-arrow-right"></i> قوانین </a>
+            <a href="#"> <i class="fas fa-arrow-right"></i> علاقه مندی ها </a>
+            <a href="#"> <i class="fas fa-arrow-right"></i> دیگر سرویس ها </a>
+        </div>
+
+        <div class="box" >
+            <h3>ارتباط با ما</h3>
+            <a href="#"dir="ltr"> <i class="fas fa-phone"></i> +98-9157160815 </a>
+            <a href="#"dir="ltr"> <i class="fas fa-envelope"></i> @tavyarco </a>
+            <img src="image/worldmap.png" class="map" alt="">
+        </div>
+
+    </div>
+
+    <div class="share">
+
+        <a href="#" class="fab fa-instagram"></a>
+        <a href="#" class="fab fa-linkedin"></a>
+        <a href="#" class="fab fa-pinterest"></a>
+    </div>
+
+    <div class="credit"> Web developer:Saba Pordel  </div>
+
+</section>
+
+<!-- footer section ends -->
+
+<!-- loader  -->
+
+<!-- <div class="loader-container">
+    <img src="image/loader-img.gif" alt="">
+</div> -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script src="https://unpkg.com/swiper@7/swiper-bundle.min.js"></script>
+
+<!-- custom js file link  -->
+<script src="js/script.js"></script>
 
 {% endblock %}

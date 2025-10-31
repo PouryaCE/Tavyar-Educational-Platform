@@ -32,6 +32,7 @@ INSTALLED_APPS = [
     'accounts.apps.AccountsConfig',
     'category.apps.CategoryConfig',
     'course.apps.CourseConfig',
+    'project.apps.ProjectConfig',
 
 
     # third packages
