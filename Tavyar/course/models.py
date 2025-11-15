@@ -4,6 +4,8 @@ from django.core.validators import MinValueValidator
 from django.urls import reverse
 from accounts.models import User
 from category.models import Category
+from django.conf import settings
+from django.utils import timezone
 
 class Course(models.Model):
     LEVEL_CHOICES = (
@@ -127,3 +129,7 @@ class Lesson(models.Model):
 
     def __str__(self):
         return f"{self.chapter.title} - {self.title}"
+
+
+
+

@@ -11,6 +11,7 @@ from django.contrib.auth import authenticate, login
 from django.contrib import messages
 
 
+
 def register(request):
     if request.method == "POST":
         email = request.POST.get('email')
@@ -101,4 +102,10 @@ def user_login(request):
         else:
             messages.error(request, "ایمیل یا رمز عبور اشتباه است ❌")
 
-    return render(request, "accounts/login.html")
+    return render(request, "home/index.html")
+
+
+
+
+def user_dashboard(request):
+    return render(request, 'accounts/dashboard.html')

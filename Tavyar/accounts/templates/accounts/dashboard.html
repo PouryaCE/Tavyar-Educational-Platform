@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>داشبورد کاربر</title>
+    <style>
+        @font-face {
+            font-family: "Vazir";
+            src: url("https://cdn.jsdelivr.net/gh/rastikerdar/vazir-font/dist/Vazir-Regular.ttf");
+        }
+        body {
+            margin: 0;
+            font-family: Vazir, sans-serif;
+            background: #f5f6fa;
+            display: flex;
+            flex-direction: column;
+            height: 100vh;
+        }
+
+        /* Header */
+        .header {
+            width: 100%;
+            background: #1e1f26;
+            color: #fff;
+            box-sizing: border-box;
+            display: flex;
+            flex-direction: column;
+        }
+        .header-1, .header-2 {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 10px 30px;
+        }
+        .header-1 .logo { font-size: 20px; font-weight: bold; color: #ffcb2d; text-decoration: none; }
+
+        /* Dashboard wrapper */
+        .dashboard-wrapper {
+            display: flex;
+            flex: 1;
+            overflow: hidden;
+        }
+
+        /* Sidebar */
+        .sidebar {
+            width: 260px;
+            background: #1e1f26;
+            color: #fff;
+            display: flex;
+            flex-direction: column;
+            padding: 25px 0;
+            flex-shrink: 0;
+        }
+        .sidebar h2 {
+            text-align: center;
+            margin-bottom: 20px;
+            font-size: 22px;
+        }
+        .menu a {
+            padding: 14px 25px;
+            color: #cfd2d6;
+            text-decoration: none;
+            display: block;
+            transition: .2s;
+            font-size: 15px;
+        }
+        .menu a:hover, .menu a.active {
+            background: #ffcb2d;
+            color: #000;
+        }
+
+        /* Content */
+        .content {
+            flex: 1;
+            padding: 30px;
+            overflow-y: auto;
+        }
+        .card {
+            background: #fff;
+            border-radius: 12px;
+            padding: 20px;
+            margin-bottom: 20px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+        }
+        .fade {
+            animation: fade .3s;
+        }
+        @keyframes fade {
+            from {opacity: 0;} to {opacity: 1;}
+        }
+    </style>
+</head>
+<body>
+
+<header class="header">
+</header>
+
+<div class="dashboard-wrapper">
+    <!-- Sidebar -->
+    <div class="sidebar">
+        <h2>داشبورد کاربر</h2>
+        <div class="menu">
+            <a href="#" class="active" data-page="home">صفحه اصلی</a>
+            <a href="#" data-page="courses">دوره‌های من</a>
+            <a href="#" data-page="transactions">تراکنش‌ها</a>
+            <a href="#" data-page="profile">پروفایل</a>
+            <a href="#" data-page="support">تیکت‌ها و پشتیبانی</a>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <div class="content" id="content-area"></div>
+</div>
+
+<script>
+    const content = document.getElementById("content-area");
+
+    const pages = {
+        home: `<div class='card fade'><h2>خوش آمدید! 👋</h2><p>از منوی کنار می‌توانید بخش‌های مختلف داشبورد را مدیریت کنید.</p></div>`,
+        courses: `<div class='card fade'><h2>دوره‌های من 🎓</h2><p>لیست دوره‌های خریداری شده:</p><ul><li>دوره جنگو پیشرفته</li><li>دوره جاوااسکریپت صفر تا صد</li></ul></div>`,
+        transactions: `<div class='card fade'><h2>سوابق پرداخت 💳</h2><p>تراکنش‌های اخیر شما:</p><p>تراکنش ۱: ۵۹۰ هزار تومان</p><p>تراکنش ۲: ۳۹۰ هزار تومان</p></div>`,
+        profile: `<div class='card fade'><h2>پروفایل 👤</h2><p>اطلاعات کاربری شما:</p><p>نام: پوریا</p><p>ایمیل: example@gmail.com</p></div>`,
+        support: `<div class='card fade'><h2>پشتیبانی 🛠️</h2><p>در این بخش می‌توانید تیکت ارسال کنید.</p></div>`,
+    };
+
+    function loadPage(page) {
+        content.innerHTML = pages[page] || "<p>صفحه پیدا نشد.</p>";
+    }
+
+    loadPage("home");
+
+    document.querySelectorAll('.menu a').forEach(link => {
+        link.addEventListener('click', e => {
+            e.preventDefault();
+            document.querySelector('.menu a.active').classList.remove('active');
+            link.classList.add('active');
+            const page = link.getAttribute('data-page');
+            loadPage(page);
+        });
+    });
+</script>
+
+</body>
+</html>

@@ -6,5 +6,6 @@ app_name = 'courses'
 
 urlpatterns = [
     path('', views.course_list, name='list'),
-    path('<int:id>/', views.course_detail, name='detail'),
+    path('<slug:slug>/', views.course_detail, name='course_detail'),  # فقط برای ریدایرکت
+    path('<slug:course_slug>/<slug:lesson_slug>/', views.lesson_detail, name='lesson_detail'),
 ]

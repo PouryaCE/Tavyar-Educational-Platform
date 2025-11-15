@@ -29,7 +29,7 @@ class ChapterInline(admin.StackedInline):
 # ===============================
 @admin.register(Course)
 class CourseAdmin(admin.ModelAdmin):
-    list_display = ('title', 'category', 'teacher', 'level', 'price', 'has_certificate', 'created_at')
+    list_display = ('title','slug', 'category', 'teacher', 'level', 'price', 'has_certificate', 'created_at')
     list_filter = ('level', 'has_certificate', 'has_exam', 'course_format', 'category')
     search_fields = ('title', 'teacher__username', 'category__name')
     inlines = [ChapterInline]
@@ -37,7 +37,7 @@ class CourseAdmin(admin.ModelAdmin):
     readonly_fields = ('created_at', 'updated_at')
     fieldsets = (
         ('مشخصات کلی دوره', {
-            'fields': ('title', 'category', 'teacher', 'level', 'course_format', 'length_minutes')
+            'fields': ('title', 'category','slug', 'teacher', 'level', 'course_format', 'length_minutes')
         }),
         ('اطلاعات تکمیلی', {
             'fields': ('prerequisite', 'software', 'description')
