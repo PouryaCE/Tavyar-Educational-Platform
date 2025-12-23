@@ -1,0 +1,113 @@
+<header class="header">
+
+    <div class="header-1">
+
+        <a href="{% url 'home:index' %}" class="logo"> <i class=""></i>آموزشگاه تاویار </a>
+
+        <form action="" class="search-form">
+            <input type="search" name="" placeholder="جستجو کنید" id="search-box">
+            <label for="search-box" class="fas fa-search"></label>
+        </form>
+
+        <div class="icons">
+            <div id="search-btn" class="fas fa-search"></div>
+            <a href="#" class="fas fa-heart"></a>
+            <a href="#" class="fas fa-shopping-cart"></a>
+            <div id="login-btn" class="fas fa-user">
+
+            </div>
+        </div>
+    </div>
+    <div class="header-2">
+        <nav class="navbar">
+            <a href="{% url 'home:index' %}">خانه</a>
+
+            <div class="dropdown">
+                <a href="{% url 'courses:list' %}" class="dropbtn">دوره ها</a>
+
+                <ul class="dropdown-content">
+
+                    <li class="has-submenu">
+                        <a href="#course1">برنامه نویسی وب 👈</a>
+
+                        <ul class="sub-dropdown-content">
+                            <li><a href="#front-end">Front-End (رابط کاربری)</a></li>
+                            <li><a href="#back-end">Back-End (بخش سرور)</a></li>
+                            <li><a href="#full-stack">Full-Stack (کامل)</a></li>
+                        </ul>
+                    </li>
+
+                    <li><a href="#course2">هوش مصنوعی</a></li>
+                    <li><a href="#course3">شبکه و امنیت</a></li>
+                </ul>
+            </div>
+
+            <a href="{% url 'home:index' %}#reviews">مربیان</a>
+            <a href="{% url 'home:index' %}#arrivals">پروژه ها</a>
+            <a href="{% url 'home:index' %}#blogs">وبلاگ</a>
+            <a href="{% url 'home:index' %}#TAZETARIN">تازه ترین ها </a>
+            <div class="dropdown">
+                  <a href="#TAZETARIN">لینک های در دسترس</a>
+
+                <ul class="dropdown-content">
+
+                    <li class="has-submenu">
+                        <a href="#course1">حساب کاربری</a>
+                    </li>
+
+                    <li><a href="#course2">آموزش های کاربر</a></li>
+
+                    <li><a href="#course4">علاقه مندی ها</a></li>
+                    <li class="has-submenu">
+                        <a href="#course1">دیگر سرویس ها 👈</a>
+
+                        <ul class="sub-dropdown-content">
+                            <li><a href="#">راهنما</a></li>
+                            <li><a href="#">قوانین</a></li>
+
+                        </ul>
+                    </li>
+
+                </ul>
+            </div>
+
+        </nav>
+    </div>
+
+</header>
+
+<!-- header section ends -->
+
+<!-- bottom navbar  -->
+
+<nav class="bottom-navbar">
+    <a href="#home" class="fas fa-home"></a>
+    <a href="#featured" class="fas fa-list"></a>
+    <a href="#arrivals" class="fas fa-tags"></a>
+    <a href="#reviews" class="fas fa-comments"></a>
+    <a href="#blogs" class="fas fa-blog"></a>
+</nav>
+
+<!-- login form  -->
+
+<div class="login-form-container">
+
+    <div id="close-login-btn" class="fas fa-times"></div>
+
+    <form action="{% url 'accounts:login' %}" method="post">
+        {% csrf_token %}
+        <h3>ورود</h3>
+        <span>نام کاربری</span>
+        <input type="email" name="email" class="box" placeholder="ایمیل خود را وارد کنید" id="">
+        <span>رمز عبور</span>
+        <input type="password" name="password" class="box" placeholder="رمز عبور خود را وارد کنید" id="">
+        <div class="checkbox">
+            <input type="checkbox" name="" id="remember-me">
+            <label for="remember-me"> به خاطر سپردن</label>
+        </div>
+        <input type="submit" value="ورود به حساب کاربری" class="btn">
+        <p>رمز خود را فراموش کرده اید ؟ <a href="#">اینجا کلیک کنید</a></p>
+        <p>ثبت نام نکرده اید ؟ <a href="{% url 'accounts:register' %}">ساخت حساب</a></p>
+    </form>
+
+</div>

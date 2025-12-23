@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+{% load static %}
+<html dir="rtl" lang="fa">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %} {% endblock title %}</title>
+    <link rel="stylesheet" href="https://unpkg.com/swiper@7/swiper-bundle.min.css"/>
+    <!-- font awesome cdn link  -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <!-- custom css file link  -->
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <!-- For iPhone 4 Retina display: -->
+    <link rel="apple-touch-icon-precomposed" href="{% static 'images//apple-touch-icon-114x114-precomposed.png' %}">
+    <!-- For iPad: -->
+    <link rel="apple-touch-icon-precomposed" href="{% static 'images//apple-touch-icon-72x72-precomposed.png' %}">
+    <!-- For iPhone: -->
+    <link rel="apple-touch-icon-precomposed" href="{% static 'images//apple-touch-icon-57x57-precomposed.png' %}">
+    <!-- Library - Google Font Familys -->
+    <link rel="stylesheet" type="text/css" href="{% static 'revolution/css/settings.css' %}">
+    <!-- RS5.0 Layers and Navigation Styles -->
+    <link rel="stylesheet" type="text/css" href="{% static 'revolution/css/layers.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'revolution/css/navigation.css' %}">
+    <!-- Library - Bootstrap v3.3.5 -->
+    <link rel="stylesheet" type="text/css" href="{% static 'libraries/lib.css' %}">
+    <!-- Custom - Common CSS -->
+    <link rel="stylesheet" type="text/css" href="{% static 'css/plugins.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/navigation-menu.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/shortcode.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'style.css' %}">
+</head>
+
+<body>
+
+<!-- ===== HEADER ===== -->
+{% include 'partials/header.html' %}
+<!-- ================== -->
+
+<!-- پیام‌ها -->
+{% include 'message.html' %}
+
+<!-- ===== MAIN CONTENT ===== -->
+{% block content %}
+{% endblock %}
+<!-- ======================== -->
+
+<!-- ===== FOOTER ===== -->
+{% include 'partials/footer.html' %}
+<!-- ================== -->
+
+<!-- JS -->
+<script src="{% static 'js/jquery.min.js' %}"></script>
+<!-- Library - Js -->
+<script src="{% static 'libraries/lib.js' %}"></script>
+<script src="{% static 'libraries/jquery.countdown.min.js' %}"></script>
+<!-- RS5.0 Core JS Files -->
+<script type="text/javascript" src="{% static 'revolution/js/jquery.themepunch.tools.min.js?rev=5.0' %}"></script>
+<script type="text/javascript" src="{% static 'revolution/js/jquery.themepunch.revolution.min.js?rev=5.0' %}"></script>
+<script type="text/javascript" src="{% static 'revolution/js/extensions/revolution.extension.video.min.js' %}"></script>
+<script type="text/javascript"
+        src="{% static 'revolution/js/extensions/revolution.extension.slideanims.min.js' %}"></script>
+<script type="text/javascript"
+        src="{% static 'revolution/js/extensions/revolution.extension.layeranimation.min.js' %}"></script>
+<script type="text/javascript"
+        src="{% static 'revolution/js/extensions/revolution.extension.navigation.min.js' %}"></script>
+<script type="text/javascript"
+        src="{% static 'revolution/js/extensions/revolution.extension.actions.min.js' %}"></script>
+<!-- Library - Theme JS -->
+<script src="{% static 'js/functions.js' %}"></script>
+<script src="https://unpkg.com/swiper@7/swiper-bundle.min.js"></script>
+<!-- custom js file link  -->
+<script src="{% static 'js/script.js' %}"></script>
+
+{% block extra_js %}{% endblock %}
+
+</body>
+</html>

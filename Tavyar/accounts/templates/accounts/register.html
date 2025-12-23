@@ -1,51 +1,128 @@
+{% extends 'base.html' %}
 {% load static %}
-<!DOCTYPE html>
-<html lang="fa">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="{% static 'css/style-login.css' %}">
-    <script defer src="{% static 'js/main-login.js' %}"></script>
-    <title>tavyar</title>
-</head>
-<body>
-    <div class="container right-panel-active">
-        <!-- Sign Up -->
-        <div class="container__form container--signup">
-            <form action="{% url 'accounts:register' %}" class="form" id="form1" method="post">
-                {% csrf_token %}
-                <h2 class="form__title">ثبت نام کاربران</h2>
-                <input name="email" type="email" dir="rtl" placeholder="ایمیل" class="input" />
-                <input name="password1" type="password" dir="rtl" placeholder="گذر واژه" class="input" />
-                <input name="password2" type="password" dir="rtl" placeholder="تایید گذر واژه" class="input" />
-                <button class="btn">ثبت نام</button>
-            </form>
-        </div>
+{% block title %}ثبت نام کاربران{% endblock %}
 
-        <!-- Sign In -->
-        <!-- <div class="container__form container--signin">
-            <form action="#" class="form" id="form2">
-                <h2 class="form__title">ورودکاربران</h2>
-                <input type="email"  dir="rtl" placeholder="نام کاربری" class="input" />
-                <input type="password" dir="rtl" placeholder="شماره همراه" class="input" />
-                  <input type="password" dir="rtl" placeholder="کد ارسال شده" class="input" />
-                <button class="btn">ارسال کد</button>
-                <button class="btn">ورود</button>
 
-            </form>
-        </div> -->
 
-        <!-- Overlay -->
-        <div class="container__overlay">
-            <div class="overlay">
-                <div class="overlay__panel overlay--left">
-                    <!-- <button class="btn" id="signIn">ورود کاربران</button> -->
-                </div>
-                <div class="overlay__panel overlay--right">
-                    <button class="btn" id="signUp">ثبت نام کاربران</button>
-                </div>
-            </div>
-        </div>
+{% block content %}
+
+<!-- home section starts  -->
+
+<section class="home" id="home">
+
+<!--    <div class="row">-->
+
+<!--        <div class="content">-->
+
+<!--              <h3>آموزش به صورت آنلاین و حضوری</h3>-->
+<!--            <h3>    <p>آموزشگاه تاویار در زمینه کامپیوتر و حسابداری خدمت رسان شماست</p></h3>-->
+
+
+<!--              <p>ارایه دهنده مدرک فنی حرفه ای</p>-->
+
+
+<!--        </div>-->
+
+<!--        &lt;!&ndash; <div class="swiper books-slider">-->
+<!--            <div class="swiper-wrapper">-->
+<!--                <a href="#" class="swiper-slide"><img src="image/softs.png" alt=""></a>-->
+
+<!--            </div> &ndash;&gt;-->
+<!--            <img src="{% static 'image/tav.ico' %}" class="stand" alt="">-->
+<!--        </div>-->
+
     </div>
-</body>
-</html>
+
+</section>
+
+<!-- home section ense  -->
+
+<!-- icons section starts  -->
+
+<section class="icons-container">
+  <div class="container right-panel-active">
+      <!-- Sign Up -->
+      <div class="img1">
+          <img src="{% static 'image/r_57_240227170733.png' %}" alt="" >
+      </div>
+<br>
+      <div class="container__form container--signup">
+          <h1 class="form__title"><p class="blinking-text">ثبت نام کاربران</p></h1>
+          <br>
+          <h2 class="form__title"><p >کاربرگرامی لطفا موارد * حتما پرشده (بارگذاری باقی موارد ارجحیت ندارد)</p></h2>
+
+          <br>
+
+          <br>
+          <form action="{% url 'accounts:register' %}" class="form1" id="form1">
+
+              <input name="email" type="email" dir="rtl" placeholder="ایمیل*" class="input1" /> <br>
+              <input name="password1" type="password" dir="rtl"  placeholder="گذرواژه*" class="input1" /> <br>
+              <input name="password2" type="password" dir="rtl" placeholder="تایید گذرواژه*" class="input1" />
+<br>
+<br>
+              <button class="btn">ثبت نام</button>
+          </form>
+      </div>
+      <div class="container__overlay">
+          <div class="overlay">
+              <div class="overlay__panel overlay--left">
+                  <!-- <button class="btn" id="signIn">ورود کاربران</button> -->
+              </div>
+              <div class="overlay__panel overlay--right">
+
+              </div>
+          </div>
+      </div>
+  </div>
+
+
+</section>
+
+<!-- icons section ends -->
+
+<!-- featured section starts  -->
+
+
+
+<!-- featured section ends -->
+
+<!-- newsletter section starts -->
+
+<!--<section class="newsletter">-->
+
+<!--    <form action="">-->
+<!--        <h3>نظرخودرا وارد کنید</h3>-->
+<!--        <input type="email" name="" placeholder="ایمیل خود را وارد کنید" id="" class="box">-->
+<!--        <input type="text" name="" placeholder="نظرخودراوارد کنید" id="" class="box">-->
+<!--        <input type="submit" value="ثبت" class="btn">-->
+<!--    </form>-->
+
+<!--</section>-->
+
+<!-- newsletter section ends -->
+
+<!-- arrivals section starts  -->
+
+
+
+<!-- arrivals section ends -->
+
+<!-- deal section starts  -->
+
+<!--<section class="deal">-->
+
+<!--    <div class="content">-->
+<!--        <h3>آموزشگاه کامپیوتر و حسابداری تاوریار</h3>-->
+<!--        <h1>مدرک معتبرفنی حرفه ای</h1>-->
+<!--    <p>کلاس هاس آنلاین و حضوری برای شما همراهان عزیز</p>-->
+<!--    </div>-->
+
+<!--    <div class="image">-->
+<!--        <img src="image/softs.png" alt="">-->
+<!--    </div>-->
+
+<!--</section>-->
+
+
+{% endblock %}

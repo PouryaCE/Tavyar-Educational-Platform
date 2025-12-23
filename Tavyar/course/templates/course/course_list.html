@@ -1,319 +1,50 @@
-<!DOCTYPE html>
+{% extends 'base.html' %}
 {% load static %}
-<html dir="rtl" lang="fa">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>آموزشگاه تاویار</title>
-
-    <link rel="stylesheet" href="https://unpkg.com/swiper@7/swiper-bundle.min.css" />
-
-    <!-- font awesome cdn link  -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
-
-    <!-- custom css file link  -->
-    <link rel="stylesheet" href="{% static 'css/style.css' %}">
-    <!-- For iPhone 4 Retina display: -->
-    <link rel="apple-touch-icon-precomposed" href="{% static 'images//apple-touch-icon-114x114-precomposed.png' %}">
-
-    <!-- For iPad: -->
-    <link rel="apple-touch-icon-precomposed" href="{% static 'images//apple-touch-icon-72x72-precomposed.png' %}">
-
-    <!-- For iPhone: -->
-    <link rel="apple-touch-icon-precomposed" href="{% static 'images//apple-touch-icon-57x57-precomposed.png' %}">
-
-    <!-- Library - Google Font Familys -->
-
-    <link rel="stylesheet" type="text/css" href="{% static 'revolution/css/settings.css' %}">
-
-    <!-- RS5.0 Layers and Navigation Styles -->
-    <link rel="stylesheet" type="text/css" href="{% static 'revolution/css/layers.css' %}">
-    <link rel="stylesheet" type="text/css" href="{% static 'revolution/css/navigation.css' %}">
-
-    <!-- Library - Bootstrap v3.3.5 -->
-      <link rel="stylesheet" type="text/css" href="{% static 'libraries/lib.css' %}">
-
-    <!-- Custom - Common CSS -->
-    <link rel="stylesheet" type="text/css" href="{% static 'css/plugins.css' %}">
-    <link rel="stylesheet" type="text/css" href="{% static 'css/navigation-menu.css' %}">
-    <link rel="stylesheet" type="text/css" href="{% static 'css/shortcode.css' %}">
-    <link rel="stylesheet" type="text/css" href="{% static 'style.css' %}">
-
-</head>
-<body>
-
-<!-- header section starts  -->
-
-<header class="header">
-
-    <div class="header-1">
-
-        <a href="#" class="logo"> <i class=""></i>آموزشگاه تاویار </a>
-
-        <form action="" class="search-form">
-            <input type="search" name="" placeholder="جستجو کنید" id="search-box">
-            <label for="search-box" class="fas fa-search"></label>
-        </form>
-
-        <div class="icons">
-            <div id="search-btn" class="fas fa-search"></div>
-            <a href="#" class="fas fa-heart"></a>
-            <a href="#" class="fas fa-shopping-cart"></a>
-            <div id="login-btn" class="fas fa-user">
-            
-            </div>
-
-
-        </div>
-
-
-    </div>
-
-    <div class="header-2">
-
-        <nav class="navbar">
-
-            <a href="#home">خانه</a>
-
-            <div class="dropdown">
-                <a href="#featured" class="dropbtn">دوره ها</a>
-
-                <ul class="dropdown-content">
-
-                    <li class="has-submenu">
-                        <a href="#course1">برنامه نویسی وب 👈</a>
-
-                        <ul class="sub-dropdown-content">
-                            <li><a href="#front-end">Front-End (رابط کاربری)</a></li>
-                            <li><a href="#back-end">Back-End (بخش سرور)</a></li>
-                            <li><a href="#full-stack">Full-Stack (کامل)</a></li>
-                        </ul>
-                    </li>
-
-                    <li><a href="#course2">هوش مصنوعی</a></li>
-                    <li><a href="#course3">شبکه و امنیت</a></li>
-                </ul>
-            </div>
-
-            <a href="#reviews">مربیان</a>
-            <a href="#arrivals">پروژه ها</a>
-            <a href="#blogs">وبلاگ</a>
-            <a href="#TAZETARIN">تازه ترین ها </a>
-            <div class="dropdown">
-                  <a href="#TAZETARIN">لینک های در دسترس</a>
-
-                <ul class="dropdown-content">
-
-                    <li class="has-submenu">
-                        <a href="#course1">حساب کاربری</a>
-                    </li>
-
-                    <li><a href="#course2">آموزش های کاربر</a></li>
-
-                    <li><a href="#course4">علاقه مندی ها</a></li>
-                    <li class="has-submenu">
-                        <a href="#course1">دیگر سرویس ها 👈</a>
-
-                        <ul class="sub-dropdown-content">
-                            <li><a href="#">راهنما</a></li>
-                            <li><a href="#">قوانین</a></li>
-
-                        </ul>
-                    </li>
-
-                </ul>
-            </div>
-
-        </nav>
-    </div>
-
-</header>
-
-<!-- header section ends -->
-
-<!-- bottom navbar  -->
-
-<nav class="bottom-navbar">
-    <a href="#home" class="fas fa-home"></a>
-    <a href="#featured" class="fas fa-list"></a>
-    <a href="#arrivals" class="fas fa-tags"></a>
-    <a href="#reviews" class="fas fa-comments"></a>
-    <a href="#blogs" class="fas fa-blog"></a>
-</nav>
-
-<!-- login form  -->
-
-<div class="login-form-container">
-
-    <div id="close-login-btn" class="fas fa-times"></div>
-
-    <form action="{% url 'accounts:login' %}" method="post">
-        {% csrf_token %}
-        <h3>ورود</h3>
-        <span>نام کاربری</span>
-        <input type="email" name="email" class="box" placeholder="ایمیل خود را وارد کنید" id="">
-        <span>رمز عبور</span>
-        <input type="password" name="password" class="box" placeholder="رمز عبور خود را وارد کنید" id="">
-        <div class="checkbox">
-            <input type="checkbox" name="" id="remember-me">
-            <label for="remember-me"> به خاطر سپردن</label>
-        </div>
-        <input type="submit" value="ورود به حساب کاربری" class="btn">
-        <p>رمز خود را فراموش کرده اید ؟ <a href="#">اینجا کلیک کنید</a></p>
-        <p>ثبت نام نکرده اید ؟ <a href="{% url 'accounts:register' %}">ساخت حساب</a></p>
-    </form>
-
-</div>
-
-<!-- home section starts  -->
-{% include 'message.html' %}
-
-
-
+{% block title %} دوره ها {% endblock %}
+{%block content%}
 <!-- arrivals section ends -->
-<div id="TAZETARIN" class="product-section container-fluid no-padding" >
-      <!-- Container -->
-      <div id="product-section">
-      <div class="section-header">
-        <h3>تازه ترین ها</h3>
-        <p>دسترسی سریع به محصولات محبوب</p>
-      </div>
-
-      <!-- Filter Buttons -->
-      <div class="filters">
-        <button class="active" data-filter="*">همه</button>
-        <button data-filter=".design">برترین دوره ها</button>
-        <button data-filter=".video">برای کودکان</button>
-        <button data-filter=".photography">کاربردی ترین دوره ها</button>
-        <button data-filter=".photography">تخفیف دارها</button>
-      </div>
-
-      <!-- Products Grid -->
-      <div class="products-grid">
-        <!-- Product 1 -->
-         {% for course in courses %}
-        
-        <div class="product design">
-          <img src="{{ course.main_pic }}" alt="{{ course.title }}">
-          <h5>{{ course.title }}</h5>
-          <h5>مدرس : پوریاجان پرور</h5>
-          <h5>حضوری</h5>
-          <br>
-          <p class="price"><del>250.000</del> 100.000</p>
-          <div class="icons">
-
-            <a href="{% url 'courses:course_detail' course.slug %}"><i class="fa fa-heart-o"></i></a>
-
-          </div>
-          <button class="add-to-cart">توضیحات بیشتر</button>
+<div id="TAZETARIN" class="product-section container-fluid no-padding">
+    <!-- Container -->
+    <div id="product-section">
+        <div class="section-header">
+            <h3>تازه ترین ها</h3>
+            <p>دسترسی سریع به محصولات محبوب</p>
         </div>
-        
-        {% endfor %}
-      </div>
+
+        <!-- Filter Buttons -->
+        <div class="filters">
+            <button class="active" data-filter="*">همه</button>
+            <button data-filter=".design">برترین دوره ها</button>
+            <button data-filter=".video">برای کودکان</button>
+            <button data-filter=".photography">کاربردی ترین دوره ها</button>
+            <button data-filter=".photography">تخفیف دارها</button>
+        </div>
+
+        <!-- Products Grid -->
+        <div class="products-grid">
+            <!-- Product 1 -->
+            {% for course in courses %}
+
+            <div class="product design">
+                <img src="{{ course.main_pic }}" alt="{{ course.title }}">
+                <h5>{{ course.title }}</h5>
+                <h5>مدرس : پوریاجان پرور</h5>
+                <h5>حضوری</h5>
+                <br>
+                <p class="price">
+                    <del>250.000</del>
+                    100.000
+                </p>
+                <div class="icons">
+
+                    <a href="{% url 'courses:course_detail' course.slug %}"><i class="fa fa-heart-o"></i></a>
+
+                </div>
+                <button class="add-to-cart">توضیحات بیشتر</button>
+            </div>
+            {% endfor %}
+        </div>
     </div><!-- Row /- -->
-
-      </div><!-- Container /- -->
-    </div>
-
-
-
-
-
-
-
-
-
-
-
-
-<!-- footer section starts  -->
-
-<section class="footer">
-
-    <div class="box-container">
-
-
-
-        <div class="box">
-            <h3>لینک های اصلی</h3>
-            <a href="#"> <i class="fas fa-arrow-right"></i> خانه </a>
-            <a href="#"> <i class="fas fa-arrow-right"></i> دوره ها </a>
-            <a href="#"> <i class="fas fa-arrow-right"></i> مربیان </a>
-            <a href="#"> <i class="fas fa-arrow-right"></i> پروژه ها </a>
-            <a href="#"> <i class="fas fa-arrow-right"></i> وبلاگ </a>
-        </div>
-
-        <div class="box">
-            <h3>لینک های در دسترس</h3>
-            <a href="#"> <i class="fas fa-arrow-right"></i> حساب کاربری </a>
-            <a href="#"> <i class="fas fa-arrow-right"></i> آموزش های کاربر </a>
-            <a href="#"> <i class="fas fa-arrow-right"></i> قوانین </a>
-            <a href="#"> <i class="fas fa-arrow-right"></i> علاقه مندی ها </a>
-            <a href="#"> <i class="fas fa-arrow-right"></i> دیگر سرویس ها </a>
-        </div>
-
-        <div class="box" >
-            <h3>ارتباط با ما</h3>
-            <a href="#"dir="ltr"> <i class="fas fa-phone"></i> +98-9157160815 </a>
-            <a href="#"dir="ltr"> <i class="fas fa-envelope"></i> @tavyarco </a>
-            <img src="image/worldmap.png" class="map" alt="">
-        </div>
-
-    </div>
-
-    <div class="share">
-
-        <a href="#" class="fab fa-instagram"></a>
-        <a href="#" class="fab fa-linkedin"></a>
-        <a href="#" class="fab fa-pinterest"></a>
-    </div>
-
-    <div class="credit"> Web developers:Saba Pordel && Pourya Janparvar  </div>
-
-</section>
-
-<!-- footer section ends -->
-
-<!-- loader  -->
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<script src="{% static 'js/jquery.min.js' %}"></script>
-
-	<!-- Library - Js -->
-	<script src="{% static 'libraries/lib.js' %}"></script>
-
-	<script src="{% static 'libraries/jquery.countdown.min.js' %}"></script>
-
-	<!-- RS5.0 Core JS Files -->
-	<script type="text/javascript" src="{% static 'revolution/js/jquery.themepunch.tools.min.js?rev=5.0' %}"></script>
-	<script type="text/javascript" src="{% static 'revolution/js/jquery.themepunch.revolution.min.js?rev=5.0' %}"></script>
-	<script type="text/javascript" src="{% static 'revolution/js/extensions/revolution.extension.video.min.js' %}"></script>
-	<script type="text/javascript" src="{% static 'revolution/js/extensions/revolution.extension.slideanims.min.js' %}"></script>
-	<script type="text/javascript" src="{% static 'revolution/js/extensions/revolution.extension.layeranimation.min.js' %}"></script>
-	<script type="text/javascript" src="{% static 'revolution/js/extensions/revolution.extension.navigation.min.js' %}"></script>
-	<script type="text/javascript" src="{% static 'revolution/js/extensions/revolution.extension.actions.min.js' %}"></script>
-
-	<!-- Library - Theme JS -->
-	<script src="{% static 'js/functions.js' %}"></script>
-
-<script src="https://unpkg.com/swiper@7/swiper-bundle.min.js"></script>
-
-<!-- custom js file link  -->
-<script src="{% static 'js/script.js' %}"></script>
-
-</body>
-</html>
+</div><!-- Container /- -->
+</div>
+{% endblock content %}
