@@ -40,7 +40,7 @@
                     <a href="{% url 'courses:course_detail' course.slug %}"><i class="fa fa-heart-o"></i></a>
 
                 </div>
-                <button class="add-to-cart">توضیحات بیشتر</button>
+                <a href="{% url 'courses:course_detail' course.slug %}" class="add-to-cart">توضیحات بیشتر</a>
             </div>
             {% endfor %}
         </div>
