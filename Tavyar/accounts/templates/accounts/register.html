@@ -3,33 +3,32 @@
 {% block title %}ثبت نام کاربران{% endblock %}
 
 
-
 {% block content %}
 
 <!-- home section starts  -->
 
 <section class="home" id="home">
 
-<!--    <div class="row">-->
+    <!--    <div class="row">-->
 
-<!--        <div class="content">-->
+    <!--        <div class="content">-->
 
-<!--              <h3>آموزش به صورت آنلاین و حضوری</h3>-->
-<!--            <h3>    <p>آموزشگاه تاویار در زمینه کامپیوتر و حسابداری خدمت رسان شماست</p></h3>-->
-
-
-<!--              <p>ارایه دهنده مدرک فنی حرفه ای</p>-->
+    <!--              <h3>آموزش به صورت آنلاین و حضوری</h3>-->
+    <!--            <h3>    <p>آموزشگاه تاویار در زمینه کامپیوتر و حسابداری خدمت رسان شماست</p></h3>-->
 
 
-<!--        </div>-->
+    <!--              <p>ارایه دهنده مدرک فنی حرفه ای</p>-->
 
-<!--        &lt;!&ndash; <div class="swiper books-slider">-->
-<!--            <div class="swiper-wrapper">-->
-<!--                <a href="#" class="swiper-slide"><img src="image/softs.png" alt=""></a>-->
 
-<!--            </div> &ndash;&gt;-->
-<!--            <img src="{% static 'image/tav.ico' %}" class="stand" alt="">-->
-<!--        </div>-->
+    <!--        </div>-->
+
+    <!--        &lt;!&ndash; <div class="swiper books-slider">-->
+    <!--            <div class="swiper-wrapper">-->
+    <!--                <a href="#" class="swiper-slide"><img src="image/softs.png" alt=""></a>-->
+
+    <!--            </div> &ndash;&gt;-->
+    <!--            <img src="{% static 'image/tav.ico' %}" class="stand" alt="">-->
+    <!--        </div>-->
 
     </div>
 
@@ -40,41 +39,50 @@
 <!-- icons section starts  -->
 
 <section class="icons-container">
-  <div class="container right-panel-active">
-      <!-- Sign Up -->
-      <div class="img1">
-          <img src="{% static 'image/r_57_240227170733.png' %}" alt="" >
-      </div>
-<br>
-      <div class="container__form container--signup">
-          <h1 class="form__title"><p class="blinking-text">ثبت نام کاربران</p></h1>
-          <br>
-          <h2 class="form__title"><p >کاربرگرامی لطفا موارد * حتما پرشده (بارگذاری باقی موارد ارجحیت ندارد)</p></h2>
+    <div class="container right-panel-active">
+        <!-- Sign Up -->
+        <div class="img1">
+            <img src="{% static 'image/r_57_240227170733.png' %}" alt="">
+        </div>
+        <br>
+        <div class="container__form container--signup">
+            <h1 class="form__title"><p class="blinking-text">ثبت نام کاربران</p></h1>
+            <br>
+            <h2 class="form__title"><p>کاربرگرامی لطفا موارد * حتما پرشده (بارگذاری باقی موارد ارجحیت ندارد)</p></h2>
 
-          <br>
+            <br>
 
-          <br>
-          <form action="{% url 'accounts:register' %}" class="form1" id="form1">
+            <br>
+            <form action="{% url 'accounts:register' %}" class="form1" id="form1" method="post">
+                {% csrf_token %}
 
-              <input name="email" type="email" dir="rtl" placeholder="ایمیل*" class="input1" /> <br>
-              <input name="password1" type="password" dir="rtl"  placeholder="گذرواژه*" class="input1" /> <br>
-              <input name="password2" type="password" dir="rtl" placeholder="تایید گذرواژه*" class="input1" />
-<br>
-<br>
-              <button class="btn">ثبت نام</button>
-          </form>
-      </div>
-      <div class="container__overlay">
-          <div class="overlay">
-              <div class="overlay__panel overlay--left">
-                  <!-- <button class="btn" id="signIn">ورود کاربران</button> -->
-              </div>
-              <div class="overlay__panel overlay--right">
+                {% if errors %}
+                <ul style="color:red;">
+                    {% for error in errors %}
+                    <li>{{ error }}</li>
+                    {% endfor %}
+                </ul>
+                {% endif %}
 
-              </div>
-          </div>
-      </div>
-  </div>
+                <input style="text-transform:none" name="email" type="email" dir="rtl" placeholder="ایمیل*" class="input1" autocapitalize="none"/> <br>
+                <input style="text-transform:none" name="password1" type="password" dir="rtl" placeholder="گذرواژه*" class="input1" autocapitalize="none"/> <br>
+                <input style="text-transform:none" name="password2" type="password" dir="rtl" placeholder="تایید گذرواژه*" class="input1" autocapitalize="none"/>
+                <br>
+                <br>
+                <button class="btn">ثبت نام</button>
+            </form>
+        </div>
+        <div class="container__overlay">
+            <div class="overlay">
+                <div class="overlay__panel overlay--left">
+                    <!-- <button class="btn" id="signIn">ورود کاربران</button> -->
+                </div>
+                <div class="overlay__panel overlay--right">
+
+                </div>
+            </div>
+        </div>
+    </div>
 
 
 </section>
@@ -82,7 +90,6 @@
 <!-- icons section ends -->
 
 <!-- featured section starts  -->
-
 
 
 <!-- featured section ends -->
@@ -103,7 +110,6 @@
 <!-- newsletter section ends -->
 
 <!-- arrivals section starts  -->
-
 
 
 <!-- arrivals section ends -->

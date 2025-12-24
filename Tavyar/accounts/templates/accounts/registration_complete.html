@@ -1,86 +1,65 @@
-<!doctype html>
-<html lang="fa" dir="rtl">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>ثبت نام موفق</title>
-  <style>
-    body {
-      font-family: 'Vazir', sans-serif;
-      background: linear-gradient(135deg, #6ee7b7, #3b82f6);
-      margin: 0;
-      height: 100vh;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      color: #333;
-    }
+{% extends 'base.html' %}
+{% load static %}
+{% block title %} ثبت نام موفق {% endblock %}
+{% block extra_css %}
 
-    .card {
-      background: #fff;
-      padding: 40px 60px;
-      border-radius: 20px;
-      text-align: center;
-      box-shadow: 0 8px 25px rgba(0,0,0,0.2);
-      max-width: 500px;
-      width: 90%;
-      animation: popIn 0.5s ease;
-    }
-
-    .checkmark {
-      font-size: 70px;
-      color: #16a34a;
-      margin-bottom: 20px;
-      animation: bounce 0.6s;
-    }
-
-    h2 {
-      margin-bottom: 15px;
-      font-size: 28px;
-      color: #111;
-    }
-
-    p {
-      font-size: 16px;
-      color: #555;
-      line-height: 1.6;
-    }
-
-    a.button {
-      display: inline-block;
-      margin-top: 25px;
-      padding: 14px 35px;
-      background-color: #3b82f6;
-      color: #fff;
-      border-radius: 10px;
-      text-decoration: none;
-      font-weight: bold;
-      font-size: 16px;
-      transition: background-color 0.3s ease;
-    }
-
-    a.button:hover {
-      background-color: #2563eb;
-    }
-
-    @keyframes bounce {
-      0% { transform: scale(0.5); }
-      60% { transform: scale(1.2); }
-      100% { transform: scale(1); }
-    }
-
-    @keyframes popIn {
-      from { opacity: 0; transform: scale(0.8); }
-      to { opacity: 1; transform: scale(1); }
-    }
   </style>
-</head>
-<body>
-  <div class="card">
-    <div class="checkmark">✅</div>
-    <h2>ثبت نام موفق</h2>
-    <p>ایمیل فعال‌سازی به <strong>{{ email }}</strong> ارسال شد. لطفاً صندوق ورودی خود را بررسی کنید.</p>
-    <a href="{% url 'accounts:login' %}" class="button">ورود به حساب</a>
+
+{% endblock %}
+
+{% block content %}
+  <div style="
+      max-width: 420px;
+      margin: 60px auto;
+      padding: 30px 25px;
+      background: #ffffff;
+      border-radius: 16px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+      text-align: center;
+      font-family: Vazirmatn, sans-serif;
+  ">
+
+    <div style="
+        font-size: 48px;
+        margin-bottom: 15px;
+    ">✅</div>
+
+    <h2 style="
+        margin: 0 0 12px 0;
+        color: #2e7d32;
+        font-size: 22px;
+        font-weight: bold;
+    ">
+      ثبت نام موفق
+    </h2>
+
+    <p style="
+        margin: 0 0 25px 0;
+        color: #555;
+        font-size: 15px;
+        line-height: 1.9;
+    ">
+      ایمیل فعال‌سازی به
+      <strong style="color:#000;">{{email}}</strong>
+      ارسال شد.
+      <br>
+      لطفاً صندوق ورودی خود را بررسی کنید.
+    </p>
+
+    <a href="{% url 'accounts:login' %}"
+       style="
+        display: inline-block;
+        padding: 12px 28px;
+        background: linear-gradient(135deg,#4caf50,#2e7d32);
+        color: #fff;
+        text-decoration: none;
+        border-radius: 30px;
+        font-size: 14px;
+        font-weight: 500;
+        transition: all 0.3s ease;
+       ">
+      ورود به حساب
+    </a>
+
   </div>
-</body>
-</html>
+{% endblock %}

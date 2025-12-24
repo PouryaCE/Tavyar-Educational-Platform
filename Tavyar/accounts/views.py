@@ -9,7 +9,7 @@ from django.conf import settings
 from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login
 from django.contrib import messages
-
+import re
 
 
 def register(request):
@@ -27,7 +27,21 @@ def register(request):
         if User.objects.filter(email=email).exists():
             errors.append("ایمیل وارد شده قبلاً ثبت شده است.")
 
+            # 🔐 اعتبارسنجی حرفه‌ای رمز عبور
+        if len(password1) < 8:
+            errors.append("رمز عبور باید حداقل ۸ کاراکتر باشد.")
+
+        if not re.search(r"[A-Za-z]", password1):
+            errors.append("رمز عبور باید شامل حداقل یک حرف باشد.")
+
+        if not re.search(r"[0-9]", password1):
+            errors.append("رمز عبور باید شامل حداقل یک عدد باشد.")
+
+        if not re.search(r"[!@#$%^&*(),.?\":{}|<>]", password1):
+            errors.append("رمز عبور باید شامل حداقل یک کاراکتر خاص [!@#$%^&*]باشد.")
+
         if errors:
+            messages.error(request, "خطایی به علت ورودی های نا معتبر رخ داده است", extra_tags="danger")
             return render(request, 'accounts/register.html', {'errors': errors})
 
         # ✅ ایجاد کاربر غیرفعال
@@ -65,8 +79,6 @@ def register(request):
     return render(request, 'accounts/register.html')
 
 
-
-
 def activate(request, uidb64, token):
     try:
         uid = force_str(urlsafe_base64_decode(uidb64))
@@ -80,12 +92,6 @@ def activate(request, uidb64, token):
         return render(request, 'accounts/activation_success.html', {'user': user})
     else:
         return render(request, 'accounts/activation_invalid.html')
-
-
-
-
-
-
 
 
 def user_login(request):
@@ -103,8 +109,6 @@ def user_login(request):
             messages.error(request, "ایمیل یا رمز عبور اشتباه است ❌")
 
     return render(request, "home/index.html")
-
-
 
 
 def user_dashboard(request):
