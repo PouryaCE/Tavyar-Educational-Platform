@@ -7,7 +7,7 @@ from django.contrib.auth.tokens import default_token_generator
 from django.core.mail import EmailMessage
 from django.conf import settings
 from django.shortcuts import render, redirect
-from django.contrib.auth import authenticate, login
+from django.contrib.auth import authenticate, login, logout
 from django.contrib import messages
 import re
 
@@ -113,3 +113,10 @@ def user_login(request):
 
 def user_dashboard(request):
     return render(request, 'accounts/dashboard.html')
+
+
+
+def user_logout(request):
+    logout(request)
+    messages.success(request, "ما با موفقیت از حساب خود خارج شدید", "success")
+    return redirect('home:index')  # یا هر صفحه‌ای کهش می‌خوای

@@ -13,9 +13,14 @@
             <div id="search-btn" class="fas fa-search"></div>
             <a href="#" class="fas fa-heart"></a>
             <a href="#" class="fas fa-shopping-cart"></a>
-            <div id="login-btn" class="fas fa-user">
+            {% if request.user.is_authenticated %}
+            <a href="{% url 'accounts:dashboard' %}" class="fas fa-user"></a>
+            {% else %}
+            <div id="login-btn" class="fas fa-user"></div>
+            {% endif %}
 
-            </div>
+
+
         </div>
     </div>
     <div class="header-2">
