@@ -95,59 +95,40 @@
 
 <section class="featured" id="arrivals">
 
-    <h1 class="heading"><span>پروژه ها</span></h1>
+    <h1 class="heading"><span>پروژه‌ها</span></h1>
 
     <div class="swiper featured-slider">
 
-        <!-- دوره 1 -->
+        {% for project in projects %}
         <div class="swiper-slide box">
             <div class="icons">
                 <a href="#" class="fas fa-heart"></a>
-                <a href="course-html.html" class="fas fa-eye"></a>
+                <a href="{% url 'project:detail' project.pk %}" class="fas fa-eye"></a>
             </div>
+
             <div class="image">
-                <img src="{% static 'image/icdl-lerning.svg' %}" alt="HTML5">
+                {% if project.image %}
+                    <img src="{{ project.image }}" alt="{{ project.title }}">
+                {% else %}
+                    <img src="{% static 'image/icdl-lerning.svg' %}" alt="project">
+                {% endif %}
             </div>
+
             <div class="content">
-                <h3> پروژه:HTML5</h3>
-                <div class="price">بهترین زبان برنامه نویسی(یسری توضحات کوتاه)</div>
+                <h3>پروژه: {{ project.title }}</h3>
+                <div class="price">
+                    {{ project.description|truncatewords:12 }}
+                </div>
             </div>
         </div>
-
-        <!-- دوره 2 -->
-        <div class="swiper-slide box">
-            <div class="icons">
-                <a href="#" class="fas fa-heart"></a>
-                <a href="course-css.html" class="fas fa-eye"></a>
-            </div>
-            <div class="image">
-                <img src="{% static 'image/icdl-lerning.svg' %}" alt="CSS3">
-            </div>
-            <div class="content">
-                <h3>پروژه :CSS3</h3>
-                <div class="price">بهترین زبان برنامه نویسی(یسری توضحات کوتاه)</div>
-            </div>
-        </div>
-
-        <!-- دوره 3 -->
-        <div class="swiper-slide box">
-            <div class="icons">
-                <a href="#" class="fas fa-heart"></a>
-                <a href="course-js.html" class="fas fa-eye"></a>
-            </div>
-            <div class="image">
-                <img src="{% static 'image/icdl-lerning.svg' %}" alt="JavaScript">
-            </div>
-            <div class="content">
-                <h3> پروژه :JavaScript</h3>
-                <div class="price">بهترین زبان برنامه نویسی(یسری توضحات کوتاه)</div>
-
-            </div>
-        </div>
+        {% empty %}
+            <p style="text-align:center">پروژه‌ای برای نمایش وجود ندارد</p>
+        {% endfor %}
 
     </div>
 
 </section>
+
 <!-- پایان پروژه -->
 
 <!-- newsletter section starts -->

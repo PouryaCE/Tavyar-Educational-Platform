@@ -1,0 +1,165 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %} لیست پروژه ها {% endblock %}
+
+{% block extra_css %}
+<style>
+    .project-detail {
+        max-width: 1100px;
+        margin: 40px auto;
+        background: linear-gradient(145deg, #fff6cc, #fffbe6);
+        border-radius: 22px;
+        padding: 30px;
+        box-shadow: 0 20px 50px rgba(0, 0, 0, 0.18);
+    }
+
+    .project-header {
+        display: grid;
+        grid-template-columns: 1.2fr 1fr;
+        gap: 30px;
+        align-items: center;
+    }
+
+    .project-image img {
+        width: 100%;
+        border-radius: 18px;
+        box-shadow: 0 12px 35px rgba(0, 0, 0, 0.25);
+        transition: transform 0.4s ease;
+    }
+
+    .project-image img:hover {
+        transform: scale(1.03);
+    }
+
+    .project-info h1 {
+        font-size: 2.2rem;
+        margin-bottom: 15px;
+        color: #2b2b2b;
+    }
+
+    .project-info p {
+        font-size: 1rem;
+        line-height: 1.9;
+        color: #444;
+        margin-bottom: 15px;
+    }
+
+    .tech-badge {
+        display: inline-block;
+        background: #facc15;
+        color: #1f1f1f;
+        padding: 6px 14px;
+        border-radius: 20px;
+        font-size: 0.85rem;
+        font-weight: 600;
+        margin: 4px 6px 10px 0;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    }
+
+    .project-links {
+        margin-top: 20px;
+        display: flex;
+        gap: 15px;
+        flex-wrap: wrap;
+    }
+
+    .project-links a {
+        text-decoration: none;
+        padding: 10px 20px;
+        border-radius: 30px;
+        font-weight: 700;
+        transition: all 0.35s ease;
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+    }
+
+    .btn-github {
+        background: #1f2937;
+        color: #facc15;
+    }
+
+    .btn-live {
+        background: #facc15;
+        color: #1f1f1f;
+    }
+
+    .project-links a:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 14px 30px rgba(0, 0, 0, 0.3);
+    }
+
+    .back-btn {
+        margin-top: 30px;
+        display: inline-block;
+        text-decoration: none;
+        color: #1f1f1f;
+        font-weight: 700;
+        padding: 10px 22px;
+        border-radius: 30px;
+        background: linear-gradient(135deg, #facc15, #f59e0b);
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.25);
+        transition: all 0.3s ease;
+    }
+
+    .back-btn:hover {
+        transform: translateX(-5px);
+        box-shadow: 0 16px 35px rgba(0, 0, 0, 0.35);
+    }
+
+    @media (max-width: 900px) {
+        .project-header {
+            grid-template-columns: 1fr;
+        }
+    }
+</style>
+{% endblock %}
+
+
+{% block content %}
+<div class="project-detail">
+
+    <div class="project-header">
+
+        <div class="project-image">
+            {% if project.image %}
+            <img src="{{ project.image }}" alt="{{ project.title }}">
+            {% endif %}
+        </div>
+
+        <div class="project-info">
+            <h1>{{ project.title }}</h1>
+
+            <p>{{ project.description }}</p>
+
+            <div>
+                {% for tech in technologies %}
+                <span class="tech-badge">{{ tech }}</span>
+                {% endfor %}
+            </div>
+
+            <div class="project-links">
+                {% if project.github_url %}
+                <a href="{{ project.github_url }}" target="_blank" class="btn-github">
+                    گیت‌هاب
+                </a>
+                {% endif %}
+
+                {% if project.live_demo %}
+                <a href="{{ project.live_demo }}" target="_blank" class="btn-live">
+                    نسخه آنلاین
+                </a>
+                {% endif %}
+            </div>
+        </div>
+
+    </div>
+
+    <a href="{% url 'project:list' %}" class="back-btn">
+        ← بازگشت به همه پروژه‌ها
+    </a>
+
+</div>
+{% endblock %}
+
+
+{% block extra_js %}
+{% endblock %}
