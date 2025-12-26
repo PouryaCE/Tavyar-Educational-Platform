@@ -12,3 +12,7 @@ def index_view(request):
 
 def rules_view(request):
     return render(request, template_name="home/rules.html")
+
+
+def help_view(request):
+    return render(request, template_name="home/help.html")
