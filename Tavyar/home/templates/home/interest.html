@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %} علاقه‌مندی‌ها | تاویار {% endblock %}
+
+{% block extra_css %}
+<style>
+    .wishlist-container {
+        max-width: 600px;
+        margin: 120px auto;
+        padding: 50px;
+        background: #ffffff;
+        border-radius: 18px;
+        box-shadow: 0 12px 35px rgba(0,0,0,0.06);
+        text-align: center;
+    }
+
+    .wishlist-container .icon {
+        font-size: 60px;
+        margin-bottom: 20px;
+    }
+
+    .wishlist-container h1 {
+        font-size: 22px;
+        margin-bottom: 10px;
+        color: #222;
+    }
+
+    .wishlist-container p {
+        color: #666;
+        font-size: 15px;
+        line-height: 1.8;
+    }
+</style>
+{% endblock extra_css %}
+
+{% block content %}
+<div class="wishlist-container">
+    <div class="icon">💛</div>
+    <h1>علاقه‌مندی‌ها</h1>
+    <p>
+        این بخش در حال حاضر <strong>در دست ساخت</strong> می‌باشد.  
+        به‌زودی می‌توانید دوره‌های مورد علاقه خود را در این قسمت ذخیره و مدیریت کنید.
+    </p>
+</div>
+{% endblock %}

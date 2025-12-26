@@ -16,3 +16,6 @@ def rules_view(request):
 
 def help_view(request):
     return render(request, template_name="home/help.html")
+
+def interest_view(request):
+    return render(request, template_name="home/interest.html")
