@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %} این دوره هنوز منتشر نشده است {% endblock %}
+
+{% block extra_css %}
+<style>
+    .empty-course {
+        max-width: 600px;
+        margin: 100px auto;
+        padding: 40px;
+        text-align: center;
+        background: #fffbea;
+        border: 1px solid #f1e3a3;
+        border-radius: 12px;
+    }
+    .empty-course h2 {
+        color: #333;
+        margin-bottom: 10px;
+    }
+    .empty-course p {
+        color: #666;
+        font-size: 15px;
+    }
+</style>
+{% endblock extra_css %}
+
+{% block content %}
+<div class="empty-course">
+    <h2>⏳ این دوره هنوز منتشر نشده</h2>
+    <p>
+        محتوای این دوره به‌زودی اضافه می‌شود.
+        لطفاً بعداً دوباره سر بزنید 🌱
+    </p>
+</div>
+{% endblock %}

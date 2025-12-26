@@ -1,0 +1,104 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %} راهنمای استفاده | تاویار {% endblock %}
+
+{% block extra_css %}
+<style>
+    .guide-container {
+        max-width: 900px;
+        margin: 70px auto;
+        padding: 45px;
+        background: #ffffff;
+        border-radius: 18px;
+        box-shadow: 0 12px 35px rgba(0,0,0,0.06);
+        line-height: 2;
+    }
+
+    .guide-container h1 {
+        text-align: center;
+        margin-bottom: 35px;
+        color: #222;
+        font-weight: 700;
+    }
+
+    .guide-container section {
+        margin-bottom: 30px;
+    }
+
+    .guide-container h2 {
+        font-size: 18px;
+        color: #f1b800;
+        margin-bottom: 8px;
+    }
+
+    .guide-container p {
+        color: #555;
+        font-size: 15px;
+        text-align: justify;
+    }
+
+    .guide-container ul {
+        padding-right: 20px;
+    }
+
+    .guide-container li {
+        margin-bottom: 12px;
+        color: #555;
+        font-size: 15px;
+    }
+</style>
+{% endblock extra_css %}
+
+{% block content %}
+<div class="guide-container">
+    <h1>راهنمای استفاده از سایت تاویار</h1>
+
+    <section>
+        <h2>1. ثبت‌نام در سایت</h2>
+        <p>
+            برای استفاده از خدمات سایت تاویار، ابتدا باید در سایت ثبت‌نام نمایید.
+            پس از وارد کردن اطلاعات و تأیید حساب کاربری، می‌توانید وارد پنل کاربری خود شوید.
+        </p>
+    </section>
+
+    <section>
+        <h2>2. ورود به حساب کاربری</h2>
+        <p>
+            با استفاده از ایمیل و رمز عبور ثبت‌شده، وارد حساب کاربری خود شوید.
+            در صورت فراموشی رمز عبور، می‌توانید از گزینه «بازیابی رمز عبور» استفاده نمایید.
+        </p>
+    </section>
+
+    <section>
+        <h2>3. خرید دوره آموزشی</h2>
+        <p>
+            پس از انتخاب دوره مورد نظر، با کلیک روی دکمه خرید و تکمیل فرآیند پرداخت،
+            دوره به حساب کاربری شما اضافه خواهد شد.
+        </p>
+    </section>
+
+    <section>
+        <h2>4. دسترسی به دوره‌ها</h2>
+        <p>
+            پس از خرید موفق، می‌توانید از بخش «دوره‌های من» به محتوای دوره‌ها
+            شامل ویدئوها و فایل‌های آموزشی دسترسی داشته باشید.
+        </p>
+    </section>
+
+    <section>
+        <h2>5. پشتیبانی و ارتباط با ما</h2>
+        <p>
+            در صورت بروز هرگونه مشکل یا سؤال، می‌توانید از طریق بخش «تماس با ما»
+            یا سیستم پشتیبانی سایت با تیم تاویار در ارتباط باشید.
+        </p>
+    </section>
+
+    <section>
+        <h2>6. قوانین استفاده</h2>
+        <p>
+            استفاده از سایت تاویار به معنای پذیرش کامل قوانین و مقررات سایت می‌باشد.
+            لطفاً پیش از خرید دوره‌ها، قوانین مربوطه را مطالعه فرمایید.
+        </p>
+    </section>
+</div>
+{% endblock %}

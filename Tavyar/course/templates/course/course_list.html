@@ -28,12 +28,12 @@
             <div class="product design">
                 <img src="{{ course.main_pic }}" alt="{{ course.title }}">
                 <h5>{{ course.title }}</h5>
-                <h5>مدرس : پوریاجان پرور</h5>
+                <h5>مدرس :{{ course.teacher.first_name }} {{course.teacher.last_name}} </h5>
                 <h5>حضوری</h5>
                 <br>
                 <p class="price">
-                    <del>250.000</del>
-                    100.000
+<!--                    <del>250.000</del>-->
+                    هزینه دوره : {{ course.price }}
                 </p>
                 <div class="icons">
 
