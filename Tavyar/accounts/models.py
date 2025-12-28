@@ -29,7 +29,7 @@ class User(AbstractBaseUser, PermissionsMixin):
     last_name = models.CharField(max_length=150, blank=True, verbose_name="نام خانوادگی")
     father_name = models.CharField(max_length=150, blank=True, verbose_name="نام پدر")
     birth = models.DateField(null=True, blank=True, verbose_name="تاریخ تولد")
-    pic = models.ImageField(upload_to='user_pics/', blank=True, null=True, verbose_name="عکس پروفایل")
+    pic = models.URLField(blank=True, null=True, verbose_name="عکس پروفایل", max_length=500, help_text="لطفا لینک تصویر پروفایل خود را وارد کنید")
     postal_code = models.CharField(max_length=20, blank=True, null=True)
 
 

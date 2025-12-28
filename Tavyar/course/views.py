@@ -2,12 +2,18 @@
 from django.shortcuts import render, redirect
 from .models import Course, Lesson
 from django.shortcuts import get_object_or_404
-
+from django.core.paginator import Paginator
 
 
 def course_list(request):
-    courses = Course.objects.all().select_related('teacher', 'category')
-    return render(request, 'course/course_list.html', {'courses': courses})
+    courses_qs = Course.objects.all().select_related('teacher', 'category')
+    paginator = Paginator(courses_qs, 6)  # ✅ queryset واقعی
+    page_number = request.GET.get('page')
+    courses = paginator.get_page(page_number)
+
+    return render(request, 'course/course_list.html', {
+        'courses': courses
+    })
 
 
 def course_detail(request, slug):
