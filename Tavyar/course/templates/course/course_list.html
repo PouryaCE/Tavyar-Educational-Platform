@@ -45,87 +45,107 @@
 
 
     /* کارت کلی */
-    .product {
-        background: #fff;
-        border-radius: 16px;
-        overflow: hidden;
-        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
-        transition: 0.3s;
-        display: flex;
-        flex-direction: column;
-    }
+.products-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 25px;
+}
 
-    .product:hover {
-        transform: translateY(-6px);
-        box-shadow: 0 16px 40px rgba(0, 0, 0, 0.12);
-    }
+.course-card {
+    background: #fff;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.08);
+    transition: all 0.4s ease;
+    position: relative;
+}
 
-    /* تصویر دوره */
-    .course-image img {
-        width: 100%;
-        height: 180px;
-        object-fit: cover;
-    }
+.course-card:hover {
+    transform: translateY(-12px);
+    box-shadow: 0 30px 60px rgba(0,0,0,0.15);
+}
 
-    /* محتوای کارت */
-    .course-content {
-        padding: 14px 16px 18px;
-    }
+.course-image {
+    position: relative;
+    height: 190px;
+    overflow: hidden;
+}
 
-    /* مدرس */
-    .teacher-info {
-        display: flex;
-        align-items: center;
-        gap: 8px;
-        margin-bottom: 8px;
-    }
+.course-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+}
 
-    .teacher-avatar {
-        width: 32px; /* 👈 کوچیک */
-        height: 32px;
-        border-radius: 50%;
-        object-fit: cover;
-        border: 2px solid #ff9800;
-    }
+.course-card:hover .course-image img {
+    transform: scale(1.1);
+}
 
-    .teacher-name {
-        font-size: 13px;
-        font-weight: 600;
-        color: #444;
-    }
+.image-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to top, rgba(0,0,0,0.6), transparent);
+}
 
-    /* عنوان دوره */
-    .course-title {
-        font-size: 15px;
-        font-weight: 700;
-        margin: 6px 0 10px;
-        color: #222;
-    }
+.teacher-badge {
+    position: absolute;
+    bottom: 12px;
+    left: 12px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(255,255,255,0.85);
+    backdrop-filter: blur(8px);
+    padding: 6px 12px;
+    border-radius: 50px;
+    font-size: 13px;
+}
 
-    /* قیمت */
-    .course-price {
-        font-size: 14px;
-        color: #ff9800;
-        font-weight: 700;
-    }
+.teacher-badge img {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    object-fit: cover;
+}
 
-    /* دکمه */
-    .course-btn {
-        display: block;
-        margin-top: 12px;
-        padding: 10px;
-        text-align: center;
-        background: #ff9800;
-        color: #fff;
-        border-radius: 10px;
-        text-decoration: none;
-        font-weight: 600;
-        transition: 0.3s;
-    }
+.course-content {
+    padding: 18px;
+}
 
-    .course-btn:hover {
-        background: #e68900;
-    }
+.course-title {
+    font-size: 16px;
+    font-weight: 700;
+    margin-bottom: 18px;
+    line-height: 1.6;
+    color: #222;
+}
+
+.course-footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.course-price {
+    font-weight: 700;
+    color: #2ecc71;
+}
+
+.course-btn {
+    padding: 8px 16px;
+    border-radius: 30px;
+    background: linear-gradient(135deg, #6a11cb, #2575fc);
+    color: #fff;
+    font-size: 14px;
+    text-decoration: none;
+    transition: 0.3s;
+}
+
+.course-btn:hover {
+    opacity: 0.9;
+    transform: scale(1.05);
+}
 
 
 </style>
@@ -156,41 +176,35 @@
         <div class="products-grid">
 
             {% for course in courses %}
-            <div class="product design">
+            <div class="course-card">
 
-                <!-- تصویر دوره -->
                 <div class="course-image">
                     <img src="{{ course.main_pic }}" alt="{{ course.title }}">
+                    <div class="image-overlay"></div>
+
+                    <div class="teacher-badge">
+                        {% if course.teacher.pic %}
+                        <img src="{{ course.teacher.pic }}">
+                        {% else %}
+                        <img src="{% static 'images/default-avatar.png' %}">
+                        {% endif %}
+                        <span>{{ course.teacher.first_name }} {{ course.teacher.last_name }}</span>
+                    </div>
                 </div>
 
-                <!-- محتوای کارت -->
                 <div class="course-content">
-
-                    <!-- مدرس -->
-                    <div class="teacher-info">
-                        {% if course.teacher.pic %}
-                        <img src="{{ course.teacher.pic }}" class="teacher-avatar">
-                        {% else %}
-                        <img src="{% static 'images/default-avatar.png' %}" class="teacher-avatar">
-                        {% endif %}
-
-                        <span class="teacher-name">
-                {{ course.teacher.first_name }} {{ course.teacher.last_name }}
-            </span>
-                    </div>
-
-                    <!-- عنوان -->
                     <h5 class="course-title">{{ course.title }}</h5>
 
-                    <!-- قیمت -->
-                    <p class="course-price">هزینه دوره: {{ course.price }}</p>
+                    <div class="course-footer">
+                        <span class="course-price">{{ course.price }} تومان</span>
 
-                    <a href="{% url 'courses:course_detail' course.slug %}" class="course-btn">
-                        مشاهده دوره
-                    </a>
+                        <a href="{% url 'courses:course_detail' course.slug %}" class="course-btn">
+                            مشاهده دوره
+                        </a>
+                    </div>
                 </div>
-            </div>
 
+            </div>
             {% empty %}
             <p>دوره‌ای برای نمایش وجود ندارد</p>
             {% endfor %}
