@@ -50,7 +50,7 @@ class User(AbstractBaseUser, PermissionsMixin):
         verbose_name_plural = "کاربران"
 
     def __str__(self):
-        return self.email
+        return f"{self.first_name} {self.last_name}"
     
     def generate_verification_code(self):
         code = str(random.randint(100000, 999999))

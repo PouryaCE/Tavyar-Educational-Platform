@@ -1,5 +1,157 @@
 {% extends 'base.html' %}
 {% load static %}
+
+
+{% block extra_css %}
+<style>
+    .pagination-wrapper {
+        text-align: center;
+        margin: 40px 0;
+    }
+
+    .pagination {
+        display: inline-flex;
+        gap: 8px;
+        list-style: none;
+        padding: 0;
+    }
+
+    .pagination li a,
+    .pagination li span {
+        padding: 8px 14px;
+        border-radius: 8px;
+        background: #f2f2f2;
+        color: #333;
+        text-decoration: none;
+        font-weight: 500;
+        transition: 0.3s;
+    }
+
+    .pagination li a:hover {
+        background: #ffb400;
+        color: #fff;
+    }
+
+    .pagination li.active span {
+        background: #ff9800;
+        color: #fff;
+    }
+
+    .pagination li.disabled span {
+        background: #ddd;
+        color: #999;
+        cursor: not-allowed;
+    }
+
+
+    /* کارت کلی */
+.products-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 25px;
+}
+
+.course-card {
+    background: #fff;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.08);
+    transition: all 0.4s ease;
+    position: relative;
+}
+
+.course-card:hover {
+    transform: translateY(-12px);
+    box-shadow: 0 30px 60px rgba(0,0,0,0.15);
+}
+
+.course-image {
+    position: relative;
+    height: 190px;
+    overflow: hidden;
+}
+
+.course-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+}
+
+.course-card:hover .course-image img {
+    transform: scale(1.1);
+}
+
+.image-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to top, rgba(0,0,0,0.6), transparent);
+}
+
+.teacher-badge {
+    position: absolute;
+    bottom: 12px;
+    left: 12px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(255,255,255,0.85);
+    backdrop-filter: blur(8px);
+    padding: 6px 12px;
+    border-radius: 50px;
+    font-size: 13px;
+}
+
+.teacher-badge img {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.course-content {
+    padding: 18px;
+}
+
+.course-title {
+    font-size: 16px;
+    font-weight: 700;
+    margin-bottom: 18px;
+    line-height: 1.6;
+    color: #222;
+}
+
+.course-footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.course-price {
+    font-weight: 700;
+    color: #2ecc71;
+}
+
+.course-btn {
+    padding: 8px 16px;
+    border-radius: 30px;
+    background: linear-gradient(135deg, #6a11cb, #2575fc);
+    color: #fff;
+    font-size: 14px;
+    text-decoration: none;
+    transition: 0.3s;
+}
+
+.course-btn:hover {
+    opacity: 0.9;
+    transform: scale(1.05);
+}
+
+
+</style>
+{% endblock %}
+
+
 {% block content %}
 <section class="home" id="home">
     <div class="row">
@@ -108,9 +260,9 @@
 
             <div class="image">
                 {% if project.image %}
-                    <img src="{{ project.image }}" alt="{{ project.title }}">
+                <img src="{{ project.image }}" alt="{{ project.title }}">
                 {% else %}
-                    <img src="{% static 'image/icdl-lerning.svg' %}" alt="project">
+                <img src="{% static 'image/icdl-lerning.svg' %}" alt="project">
                 {% endif %}
             </div>
 
@@ -122,7 +274,7 @@
             </div>
         </div>
         {% empty %}
-            <p style="text-align:center">پروژه‌ای برای نمایش وجود ندارد</p>
+        <p style="text-align:center">پروژه‌ای برای نمایش وجود ندارد</p>
         {% endfor %}
 
     </div>
@@ -153,189 +305,55 @@
 
 </section>
 
-<!-- arrivals section ends -->
 <div id="TAZETARIN" class="product-section container-fluid no-padding">
     <!-- Container -->
     <div id="product-section">
         <div class="section-header">
-            <h3>تازه ترین ها</h3>
-            <p>دسترسی سریع به محصولات محبوب</p>
+            <h3>تازه ترین دوره ها</h3>
         </div>
 
-        <!-- Filter Buttons -->
-        <div class="filters">
-            <button class="active" data-filter="*">همه</button>
-            <button data-filter=".design">برترین دوره ها</button>
-            <button data-filter=".video">برای کودکان</button>
-            <button data-filter=".photography">کاربردی ترین دوره ها</button>
-            <button data-filter=".photography">تخفیف دارها</button>
-        </div>
+
+
 
         <!-- Products Grid -->
         <div class="products-grid">
-            <!-- Product 1 -->
-            <div class="product design">
-                <img src="{% static 'image/14020331-4.png' %}" alt="">
-                <h5>نام دوره : ووردپرس</h5>
-                <h5>مدرس : پوریاجان پرور</h5>
-                <h5>حضوری</h5>
-                <br>
-                <p class="price">
-                    <del>250.000</del>
-                    100.000
-                </p>
-                <div class="icons">
 
-                    <a href="#"><i class="fa fa-heart-o"></i></a>
+            {% for course in latest_courses %}
+            <div class="course-card">
 
+                <div class="course-image">
+                    <img src="{{ course.main_pic }}" alt="{{ course.title }}">
+                    <div class="image-overlay"></div>
+
+                    <div class="teacher-badge">
+                        {% if course.teacher.pic %}
+                        <img src="{{ course.teacher.pic }}">
+                        {% else %}
+                        <img src="{% static 'images/default-avatar.png' %}">
+                        {% endif %}
+                        <span>{{ course.teacher.first_name }} {{ course.teacher.last_name }}</span>
+                    </div>
                 </div>
-                <button class="add-to-cart">توضیحات بیشتر</button>
-            </div>
 
-            <!-- Product 2 -->
-            <div class="product video">
-                <img src="{% static 'image/14020331-4.png' %}" alt="">
-                <h5>نام دوره : ووردپرس</h5>
-                <h5>مدرس : پوریاجان پرور</h5>
-                <h5>حضوری</h5>
-                <br>
-                <p class="price">
-                    <del>250.000</del>
-                    100.000
-                </p>
-                <div class="icons">
+                <div class="course-content">
+                    <h5 class="course-title">{{ course.title }}</h5>
 
-                    <a href="#"><i class="fa fa-heart-o"></i></a>
+                    <div class="course-footer">
+                        <span class="course-price">{{ course.price }} تومان</span>
 
+                        <a href="{% url 'courses:course_detail' course.slug %}" class="course-btn">
+                            مشاهده دوره
+                        </a>
+                    </div>
                 </div>
-                <button class="add-to-cart">توضیحات بیشتر</button>
+
             </div>
-
-            <!-- Product 3 -->
-            <div class="product photography">
-                <img src="{% static 'image/14020331-4.png' %}" alt="">
-                <h5>نام دوره : ووردپرس</h5>
-                <h5>مدرس : پوریاجان پرور</h5>
-                <h5>حضوری</h5>
-                <br>
-                <p class="price">
-                    <del>250.000</del>
-                    100.000
-                </p>
-
-                <div class="icons">
-
-                    <a href="#"><i class="fa fa-heart-o"></i></a>
-
-                </div>
-                <button class="add-to-cart">توضیحات بیشتر</button>
-            </div>
-
-            <!-- Product 4 -->
-            <div class="product design">
-                <img src="{% static 'image/14020331-4.png' %}" alt="">
-                <h5>نام دوره : ووردپرس</h5>
-                <h5>مدرس : پوریاجان پرور</h5>
-                <h5>حضوری</h5>
-                <br>
-                <p class="price">
-                    <del>250.000</del>
-                    100.000
-                </p>
-
-                <div class="icons">
-
-                    <a href="#"><i class="fa fa-heart-o"></i></a>
-
-                </div>
-                <button class="add-to-cart">توضیحات بیشتر</button>
-            </div>
-
-            <!-- Product 5 -->
-            <div class="product video">
-                <img src="{% static 'image/14020331-4.png' %}" alt="">
-                <h5>نام دوره : ووردپرس</h5>
-                <h5>مدرس : پوریاجان پرور</h5>
-                <h5>حضوری</h5>
-                <br>
-                <p class="price">
-                    <del>250.000</del>
-                    100.000
-                </p>
-
-                <div class="icons">
-
-                    <a href="#"><i class="fa fa-heart-o"></i></a>
-
-                </div>
-                <button class="add-to-cart">توضیحات بیشتر</button>
-            </div>
-
-            <!-- Product 6 -->
-            <div class="product photography">
-                <img src="{% static 'image/14020331-4.png' %}" alt="">
-                <h5>نام دوره : ووردپرس</h5>
-                <h5>مدرس : پوریاجان پرور</h5>
-                <h5>حضوری</h5>
-                <br>
-                <p class="price">
-                    <del>250.000</del>
-                    100.000
-                </p>
-
-                <div class="icons">
-
-                    <a href="#"><i class="fa fa-heart-o"></i></a>
-
-                </div>
-                <button class="add-to-cart">توضیحات بیشتر</button>
-            </div>
-
-            <!-- Product 7 -->
-            <div class="product web">
-                <img src="{% static 'image/14020331-4.png' %}" alt="">
-                <h5>نام دوره : ووردپرس</h5>
-                <h5>مدرس : پوریاجان پرور</h5>
-                <h5>حضوری</h5>
-                <br>
-                <p class="price">
-                    <del>250.000</del>
-                    100.000
-                </p>
-
-                <div class="icons">
-
-                    <a href="#"><i class="fa fa-heart-o"></i></a>
-
-                </div>
-                <button class="add-to-cart">توضیحات بیشتر</button>
-            </div>
-
-            <!-- Product 8 -->
-            <div class="product design">
-                <img src="{% static 'image/14020331-4.png' %}" alt="">
-                <h5>نام دوره : ووردپرس</h5>
-                <h5>مدرس : پوریاجان پرور</h5>
-                <h5>حضوری</h5>
-                <br>
-                <p class="price">
-                    <del>250.000</del>
-                    100.000
-                </p>
-
-                <div class="icons">
-
-                    <a href="#"><i class="fa fa-heart-o"></i></a>
-
-                </div>
-                <button class="add-to-cart">توضیحات بیشتر</button>
-            </div>
+            {% empty %}
+            <p>دوره‌ای برای نمایش وجود ندارد</p>
+            {% endfor %}
         </div>
-    </div><!-- Row /- -->
-
-</div><!-- Container /- -->
+    </div><!-- Container /- -->
 </div>
-<!-- deal section starts  -->
 
 <section class="deal">
 
@@ -452,5 +470,7 @@
     </div>
 </section>
 {% endblock content %}
+
+
 {% block extra_js %}
 {% endblock extra_js %}
