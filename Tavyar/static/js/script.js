@@ -158,3 +158,26 @@ var swiper = new Swiper(".blogs-slider", {
     },
   },
 });
+
+
+document.addEventListener("DOMContentLoaded", function () {
+
+  const slides = document.querySelectorAll("#hero-slider .hero-slide");
+  let currentIndex = 0;
+  const slideInterval = 5000; // 5 ثانیه
+
+  if (slides.length === 0) return;
+
+  function showSlide(index) {
+    slides.forEach(slide => slide.classList.remove("hero-active"));
+    slides[index].classList.add("hero-active");
+  }
+
+  function nextSlide() {
+    currentIndex = (currentIndex + 1) % slides.length;
+    showSlide(currentIndex);
+  }
+
+  setInterval(nextSlide, slideInterval);
+
+});

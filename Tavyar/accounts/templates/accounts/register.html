@@ -39,22 +39,21 @@
 <!-- icons section starts  -->
 
 <section class="icons-container">
-    <div class="container right-panel-active">
-        <!-- Sign Up -->
-        <div class="img1">
-            <img src="{% static 'image/r_57_240227170733.png' %}" alt="">
+  <div class="container right-panel-active">
+<div class="koli-safhe-asli">
+
+    <div class="tasvir-section">
+        <div class="tasvir-karakter-paygah">
+            <img src="{% static 'images/ffd9b46366e14141790a80d4922485bf.gif' %}" alt="کاراکتر نشسته با لپ تاپ" class="karakter-img">
         </div>
-        <br>
-        <div class="container__form container--signup">
-            <h1 class="form__title"><p class="blinking-text">ثبت نام کاربران</p></h1>
-            <br>
-            <h2 class="form__title"><p>کاربرگرامی لطفا موارد * حتما پرشده (بارگذاری باقی موارد ارجحیت ندارد)</p></h2>
+    </div>
 
-            <br>
+    <div class="form-section form-sefid">
+        <h1 class="onvan-form-fa">ثبت نام حساب کاربری</h1>
+        <p class="onvan-zireen">تاوریار توسعه رایمند</p>
 
-            <br>
-            <form action="{% url 'accounts:register' %}" class="form1" id="form1" method="post">
-                {% csrf_token %}
+        <form action="{% url 'accounts:register' %}" class="shekl-form" method="post">
+             {% csrf_token %}
 
                 {% if errors %}
                 <ul style="color:red;">
@@ -64,25 +63,29 @@
                 </ul>
                 {% endif %}
 
-                <input style="text-transform:none" name="email" type="email" dir="rtl" placeholder="ایمیل*" class="input1" autocapitalize="none"/> <br>
-                <input style="text-transform:none" name="password1" type="password" dir="rtl" placeholder="گذرواژه*" class="input1" autocapitalize="none"/> <br>
-                <input style="text-transform:none" name="password2" type="password" dir="rtl" placeholder="تایید گذرواژه*" class="input1" autocapitalize="none"/>
-                <br>
-                <br>
-                <button class="btn">ثبت نام</button>
-            </form>
-        </div>
-        <div class="container__overlay">
-            <div class="overlay">
-                <div class="overlay__panel overlay--left">
-                    <!-- <button class="btn" id="signIn">ورود کاربران</button> -->
-                </div>
-                <div class="overlay__panel overlay--right">
+            <label for="email-input" class="form-label">ایمیل*</label>
+            <input name="email" type="email" id="email-input" placeholder="ایمیل خود را وارد کنید" class="dastgah-vorudi" required />
 
-                </div>
+            <label for="password-input" class="form-label">گذرواژه*</label>
+            <div class="gozargah-vorudi">
+                <input name="password1" type="password" id="password-input" placeholder="گذرواژه خود را وارد کنید" class="dastgah-vorudi" required />
+                <i class="fas fa-eye-slash nahan-cheshm"></i>
             </div>
-        </div>
+<label for="password-input" class="form-label">تایید گذرواژه*</label>
+            <div class="gozargah-vorudi">
+                <input name="password2" type="password" id="password-input" placeholder="گذرواژه خود را وارد کنید" class="dastgah-vorudi"
+                    required />
+                <i class="fas fa-eye-slash nahan-cheshm"></i>
+            </div>
+
+            <button class="dokme-asli-form">ثبت</button>
+
+
+
+        </form>
     </div>
+</div>
+  </div>
 
 
 </section>

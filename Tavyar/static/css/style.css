@@ -195,7 +195,7 @@ section{
 }
 
 .bottom-navbar a:hover{
-    background:var(--dark-color);
+    background:#85989a;
 }
 
 .login-form-container{
@@ -1226,7 +1226,7 @@ section{
   }
 
   .filters button {
-    margin: 0 5px;
+    margin: 5px 5px;
     padding: 8px 15px;
     border: 1px solid #7f9588;
     background-color: #fff;
@@ -1465,3 +1465,420 @@ section{
 .esmekarbar{
   margin-top:50PX;
 }
+
+
+ /* =============================
+   Revolution Slider - Custom Fix
+   ============================= */
+
+#home-revslider {
+  direction: rtl;
+  font-family: "Vazir", sans-serif;
+}
+
+/* تاریک کردن تصویر پس‌زمینه برای خوانایی متن */
+#home-revslider .rev-slidebg {
+  filter: brightness(0.6);
+}
+
+/* استایل عمومی کپشن‌ها */
+#home-revslider .tp-caption {
+  font-family: "Vazir", sans-serif !important;
+  text-shadow: 2px 2px 8px rgba(0,0,0,0.7);
+  text-align: center;
+  line-height: 1.8;
+  white-space: normal;
+}
+
+/* عنوان اصلی اسلایدر */
+#home-revslider .NotGeneric-Title {
+  font-size: 3.2rem !important;
+  font-weight: 700;
+  color: #fff;
+  padding: 0 20px;
+}
+
+/* متن توضیحی زیر عنوان */
+#home-revslider .slider-desc {
+  font-size: 1.6rem;
+  color: #f1f1f1;
+  max-width: 700px;
+  margin: auto;
+}
+
+/* دکمه داخل اسلایدر (اگر اضافه کنی) */
+#home-revslider .slider-btn {
+  display: inline-block;
+  margin-top: 15px;
+  padding: 10px 28px;
+  background: #ffc300;
+  color: #000;
+  border-radius: 6px;
+  font-size: 1.5rem;
+  font-weight: 600;
+}
+
+#home-revslider .slider-btn:hover {
+  background: #fff;
+}
+
+/* =============================
+   Responsive
+   ============================= */
+
+@media (max-width: 768px) {
+  #home-revslider {
+    height: 300px !important;
+  }
+
+  #home-revslider .NotGeneric-Title {
+    font-size: 2.2rem !important;
+  }
+
+  #home-revslider .slider-desc {
+    font-size: 1.4rem;
+    padding: 0 15px;
+  }
+}
+
+@media (max-width: 480px) {
+  #home-revslider {
+    height: 260px !important;
+  }
+
+  #home-revslider .NotGeneric-Title {
+    font-size: 1.9rem !important;
+  }
+}
+
+
+
+
+/* ===== HERO SLIDER ===== */
+#hero-slider {
+    position: relative;
+    height: 400px;
+    overflow: hidden;
+    direction: rtl;
+}
+
+/* هر اسلاید */
+.hero-slide {
+    position: absolute;
+    inset: 0;
+    background-size: cover;
+    background-position: center 30%;
+    background-position: center;
+    opacity: 0;
+    transition: opacity 1s ease-in-out;
+}
+
+/* اسلاید فعال */
+.hero-slide.hero-active {
+    opacity: 1;
+    z-index: 1;
+}
+
+
+
+.hero-content h2 {
+    font-size: 3rem;
+    margin-bottom: 15px;
+}
+
+.hero-content p {
+    font-size: 1.6rem;
+    line-height: 1.9;
+    max-width: 700px;
+    margin-bottom: 25px;
+}
+
+
+
+.hero-btn:hover {
+    background: #fff;
+}
+
+/* ===== Responsive ===== */
+@media (max-width: 768px) {
+    #hero-slider {
+        height: 300px;
+    }
+
+    .hero-content h2 {
+        font-size: 2.2rem;
+    }
+
+    .hero-content p {
+        font-size: 1.4rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .hero-content h2 {
+        font-size: 1.9rem;
+    }
+}
+
+
+/* --------------- استایل‌های کانتینر اصلی و تنظیمات RTL --------------- */
+
+.koli-safhe-asli {
+    /* تنظیمات پس‌زمینه و مرکزی‌سازی، جایگزین استایل body */
+    min-height: 100vh;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0;
+
+    /* پس‌زمینه روشن و ملایم (مانند تصویر) */
+    background-color: #f0f2f5;
+    font-family: 'Tahoma', sans-serif;
+    direction: rtl;
+    /* جهت‌دهی راست به چپ */
+
+    /* ابعاد کانتینر کارت */
+    width: 900px;
+    height: 550px;
+    background-color: #fff;
+    /* پس‌زمینه سفید برای کانتینر اصلی */
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    border-radius: 15px;
+    overflow: hidden;
+}
+
+/* 1. استایل بخش تصویر (ستون راست - رنگ پس‌زمینه روشن) */
+.tasvir-section {
+    flex: 1;
+    /* این ستون نصف عرض را می‌گیرد */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* رنگ آبی ملایم پس‌زمینه */
+    background-color: #e6f0ff;
+    height: 100%;
+    padding: 20px;
+}
+
+.tasvir-karakter-paygah {
+    width: 80%;
+    max-width: 300px;
+    text-align: center;
+}
+
+.karakter-img {
+    width: 250%;
+    /*! height: 548px; */
+    display: block;
+    /*! margin-\ top: -42px; */
+    margin-right: -70px;
+}
+
+/* 2. استایل بخش فرم (ستون چپ - سفید) */
+.form-section {
+    flex: 1;
+    padding: 60px 40px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background-color: #fff;
+    height: 100%;
+}
+
+.onvan-form-fa {
+    font-size: 32px;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 5px;
+}
+
+.onvan-zireen {
+    font-size: 16px;
+    color: #666;
+    margin-bottom: 30px;
+}
+
+.form-label {
+    display: block;
+    font-size: 14px;
+    font-weight: 600;
+    color: #333;
+    margin-bottom: 8px;
+    margin-top: 15px;
+}
+
+.gozargah-vorudi {
+    position: relative;
+    margin-bottom: 25px;
+}
+
+/* استایل فیلدهای ورودی */
+.dastgah-vorudi {
+    width: 100%;
+    padding: 12px 15px;
+    box-sizing: border-box;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-size: 16px;
+    color: #333;
+    outline: none;
+    transition: border-color 0.3s;
+    text-align: right;
+    direction: rtl;
+}
+
+.dastgah-vorudi:focus {
+    border-color: #007bff;
+    /* رنگ آبی هنگام فوکوس */
+}
+
+/* آیکون چشم (نمایش/پنهان کردن رمز) */
+.nahan-cheshm {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    left: 15px;
+    /* موقعیت در سمت چپ */
+    color: #999;
+    cursor: pointer;
+    font-size: 18px;
+}
+
+
+/* دکمه ورود (آبی پررنگ) */
+.dokme-asli-form {
+    width: 100%;
+    padding: 14px;
+    border: none;
+    border-radius: 8px;
+    color: white;
+    font-size: 18px;
+    cursor: pointer;
+    margin-top: 20px;
+    font-weight: bold;
+    background-color: #f6c349;
+    box-shadow: 0 4px 10px rgba(0, 123, 255, 0.4);
+    transition: background-color 0.3s;
+}
+
+.dokme-asli-form:hover {
+    background-color: #999;
+}
+
+/* لینک ثبت نام (دکمه ثانویه) */
+.dokme-sabtenam {
+    display: block;
+    text-align: center;
+    padding: 14px;
+    border: 1px solid #007bff;
+    border-radius: 8px;
+    color: #007bff;
+    font-size: 16px;
+    text-decoration: none;
+    margin-top: 15px;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.dokme-sabtenam:hover {
+    background-color: #f0f8ff;
+}
+
+
+/* --------------- رسپانسیو (واکنش‌گرا) بودن --------------- */
+
+@media (max-width: 768px) {
+
+    .koli-safhe-asli {
+        width: 90%;
+        height: auto;
+        min-height: auto;
+        flex-direction: column-reverse;
+        /* فرم بالا، تصویر پایین */
+        padding: 0;
+        border-radius: 15px;
+    }
+
+    .form-section {
+        width: 100%;
+        padding: 30px 25px;
+        order: 1;
+        /* نمایش فرم در بالا */
+    }
+
+    /* بخش تصویر در موبایل ارتفاع کمتری بگیرد */
+    .tasvir-section {
+        width: 100%;
+        height: 200px;
+        padding: 10px;
+        order: 2;
+        /* نمایش تصویر در پایین */
+        border-radius: 15px 15px 0 0;
+    }
+
+    .karakter-img {
+        max-width: 200px;
+    }
+}
+/* 1. استایل بخش تصویر (ستون راست - رنگ پس‌زمینه روشن) */
+.tasvir-section {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* رنگ آبی ملایم پس‌زمینه */
+    background-color: #fff;
+    height: 100%;
+    padding: 20px;
+}
+
+/* کانتینر اصلی تصویر */
+.tasvir-karakter-paygah {
+    /* تغییرات: ابعاد را به 95% کانتینر والد تغییر می‌دهیم تا فضای بیشتری را بگیرد */
+    width: 95%;
+    height: 95%;
+    /* ارتفاع ثابت 95% را هم اعمال می‌کنیم */
+    max-width: none;
+    /* حذف max-width 300px برای استفاده از فضای بیشتر */
+    text-align: center;
+    display: flex;
+    /* اضافه شده برای مرکزیت‌دهی تصویر درون خود */
+    justify-content: center;
+    align-items: center;
+}
+
+/* استایل تگ تصویر (تغییر اصلی اینجا است) */
+.karakter-img {
+    width: 100%;
+    height: 100%;
+    display: block;
+    /* تنظیم کلیدی: تصویر را در کادر جا می‌دهد و ابعادش حفظ می‌شود */
+    object-fit: contain;
+}
+
+/* ... استایل‌های بعدی تا اینجا ... */
+
+
+/* --------------- رسپانسیو (واکنش‌گرا) بودن --------------- */
+
+@media (max-width: 768px) {
+    /* ... استایل‌های قبلی ... */
+
+    /* بخش تصویر در موبایل ارتفاع کمتری بگیرد */
+    .tasvir-section {
+        width: 100%;
+        height: 250px;
+        /* افزایش ارتفاع در موبایل برای نمایش بهتر */
+        padding: 10px;
+        order: 2;
+        border-radius: 15px 15px 0 0;
+    }
+
+    /* حذف max-width در موبایل برای استفاده از تمام کادر */
+    .tasvir-karakter-paygah {
+        max-width: none;
+        width: 100%;
+        height: 100%;
+
+}
+    /* .karakter-img نیازی به تغییر ندارد چون از 100% و object-fit: contain استفاده می‌کند */}
